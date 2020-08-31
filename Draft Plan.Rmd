@@ -50,7 +50,36 @@ summary(cars)
 You can also embed plots, for example:
 
 ```{r Data Selection}
-summary(cars)
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(knitr)
+library(data.table)
+library(dplyr)
+
+
+
+# Import data
+Fuel_Jul20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_july2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
+
+Fuel_Jun20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_june2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
+
+Fuel_May20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_may2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
+
+NSWPublicHoliday<- read.csv("Public_Holiday_2019-2020\\australian_public_holidays_2020.csv")%>% filter(Jurisdiction=="nsw")
+
+NSWPublicHoliday$Date<- ymd(NSWPublicHoliday$Date)
+NSWPublicHoliday<- NSWPublicHoliday%>% rename(date=Date)
+str(NSWPublicHoliday)
+
+## Combine Fuel May to Jul 20
+Fuel_RAW<- rbind(Fuel_May20,Fuel_Jun20,Fuel_Jul20)
+Fuel_RAW$PriceUpdatedDate<- dmy_hms(Fuel_RAW$PriceUpdatedDate)
+Fuel_RAW$date <- as.Date(format(Fuel_RAW$PriceUpdatedDate, "%Y-%m-%d"))
+
+## merge Fuel_RAW with public holiday
+Fuel_All<- left_join(Fuel_RAW,NSWPublicHoliday,by="date")
+
 ```
 
 ## The regression modelling techniques to be employed
@@ -76,3 +105,9 @@ You can also embed plots, for example:
 ```{r Appendix}
 summary(cars)
 ```
+
+
+## Reference
+NSW Fuel Price - https://data.gov.au/dataset/ds-nsw-d1c82729-5d6a-4a82-876f-a6a845e7b9f4/details?q=petrol%20nsw
+
+Public Holiday - https://data.gov.au/dataset/ds-dga-b1bc6077-dadd-4f61-9f8c-002ab2cdff10/details?q=public%20holiday 
