@@ -38,7 +38,7 @@ Stakeholders:
     Roads & Maritime (if we incorporate public transport).
     ACCC could be a stakeholder.
     Treasury
-    Welfare groups
+    Welfare groupcategorical datas
 
 ```{r Rationale}
 summary(cars)
@@ -47,9 +47,21 @@ summary(cars)
 
 ## The range of datasets examined as well as those chosen for the analysis (include details about how you merged the different datasets and an assessment on whether the granularity of the data sources is sufficient to answer your research questions)
 
-You can also embed plots, for example:
+### Datasets examined
+We have examined property data, vehicle sales data, Fuel price, public holiday from a various of websites.
 
-```{r Data Selection}
+We are not able to obtain vehicle sales data in a daily level.
+
+Property data from https://valuation.property.nsw.gov.au/embed/propertySalesInformation is also an good option but will require more time to examine. For this proposal, we use fuel price for its accessibility.
+
+### Datesets chosen
+We chose the fuel price data set as our main data set as it contains different types of data, categorical data (service station, fuel type), continuous data (price update time), discrete data (fuel price) and locality.
+
+Public holiday as a supplement data set to aid more in-depth time series analysis.  
+
+### Dataset import 
+
+```{r Data import and merge}
 library(tidyverse)
 library(lubridate)
 library(readxl)
@@ -58,8 +70,7 @@ library(data.table)
 library(dplyr)
 
 
-
-# Import data
+# Import data from local
 Fuel_Jul20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_july2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
 
 Fuel_Jun20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_june2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
@@ -68,11 +79,18 @@ Fuel_May20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_m
 
 NSWPublicHoliday<- read.csv("Public_Holiday_2019-2020\\australian_public_holidays_2020.csv")%>% filter(Jurisdiction=="nsw")
 
+```
+### Dataset merge
+
+To merge all data sets, we need to first combined all the subsets of Fuel price data, then left join with the public holiday table.
+
+```{r Data  merge}
+
+# format date to date and rename column
 NSWPublicHoliday$Date<- ymd(NSWPublicHoliday$Date)
 NSWPublicHoliday<- NSWPublicHoliday%>% rename(date=Date)
-str(NSWPublicHoliday)
 
-## Combine Fuel May to Jul 20
+## Combine Fuel data May to Jul 20
 Fuel_RAW<- rbind(Fuel_May20,Fuel_Jun20,Fuel_Jul20)
 Fuel_RAW$PriceUpdatedDate<- dmy_hms(Fuel_RAW$PriceUpdatedDate)
 Fuel_RAW$date <- as.Date(format(Fuel_RAW$PriceUpdatedDate, "%Y-%m-%d"))
@@ -80,7 +98,57 @@ Fuel_RAW$date <- as.Date(format(Fuel_RAW$PriceUpdatedDate, "%Y-%m-%d"))
 ## merge Fuel_RAW with public holiday
 Fuel_All<- left_join(Fuel_RAW,NSWPublicHoliday,by="date")
 
+## sample of the merged data
+head(Fuel_All)
+
 ```
+
+### Dataset eda
+
+```{r Data edm1}
+describe(Fuel_All)
+
+```
+
+We have a total of 154,980 price records from May to Jul 20 for a period of 92 days (2020-05-01 to 2020-07-31) across 2071 unique service station names with 2189 different addresses for 24 brands with 9 different fuel type. 
+
+From above we can tell the some of the stations shared a same name but with different locations. 
+
+```{r Data edm2}
+ServiceStationList<-Fuel_All%>%
+  select("ServiceStationName","Address", "Suburb","Postcode")%>%
+  unique()
+
+head(group_by(ServiceStationList,ServiceStationName)%>%count()%>%arrange(-n),10)
+
+head(group_by(ServiceStationList,Address)%>%count()%>%arrange(-n),10)
+
+```
+
+we can see some of the ServiceStationName has multiple addresses, for example, service station "Caltex Armidale" has 4 different street addresses and some of the address has multiple service station name.
+
+We will need to check if the station with same addresses can be merge.
+
+```{r Data edm3}
+DuplicateAddress <- ServiceStationList[duplicated(ServiceStationList$Address),]%>%select(Address)
+data_list <- as.vector(DuplicateAddress[,1])
+StationsToChk <- Fuel_All[Fuel_All$Address %in% data_list,]
+
+head(StationsToChk,5)
+write.csv(StationsToChk,"StationsToChk.csv")
+
+```
+
+Assuming we decided not to merge any service stations by addresses, next step will be to build a primary location key for analysis to a station level.
+
+```{r Data edm4}
+ServiceStationList$LocationKey <- paste(ServiceStationList$ServiceStationName,ServiceStationList$Address)
+Fuel_All$LocationKey<- paste(Fuel_All$ServiceStationName,Fuel_All$Address)
+
+head(Fuel_All)
+
+```
+
 
 ## The regression modelling techniques to be employed
 
@@ -111,3 +179,4 @@ summary(cars)
 NSW Fuel Price - https://data.gov.au/dataset/ds-nsw-d1c82729-5d6a-4a82-876f-a6a845e7b9f4/details?q=petrol%20nsw
 
 Public Holiday - https://data.gov.au/dataset/ds-dga-b1bc6077-dadd-4f61-9f8c-002ab2cdff10/details?q=public%20holiday 
+
