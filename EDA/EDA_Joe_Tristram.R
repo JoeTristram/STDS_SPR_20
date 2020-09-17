@@ -1,5 +1,6 @@
 # load packages ---------
 library(tidyverse)
+library(skimr)
 library(here)
 
 # read in data --------
@@ -23,9 +24,9 @@ skim(fuel_all)
 
 # new variables for EDA ---------
 
-fuel_type_list <- levels(factor(fuel_all$FuelCode))
-postcode_list <- levels(factor(fuel_all$Postcode))
-station_list <- levels(factor(fuel_all$Brand))
+fuel_type_list <- as.list(levels(factor(fuel_all$FuelCode)))
+postcode_list <- as.list(levels(factor(fuel_all$Postcode)))
+station_list <- as.list(levels(factor(fuel_all$Brand)))
 
 #Fuel type lists
 standard_unleaded <- list("E10", "U91", "E85")
@@ -43,8 +44,7 @@ gas <- list("LPG", "CNG")
 # sub-setting data; sorting and filtering ---------
 
 average_fuel_price <- fuel_all %>%
-  filter(Brand != "Costco", Brand != "NRMA", FuelCode != "E85") %>%
-  filter(FuelCode == premium_unleaded) %>%
+  filter(FuelCode == standard_diesel) %>%
   select(Brand, Postcode, FuelCode, Price) %>%
   group_by(FuelCode, Brand, Postcode) %>%
   summarise(avg_price = mean(Price))
@@ -66,3 +66,11 @@ wrangling %>%
   ggplot(aes(x = avg_price, y = Brand)) +
   geom_boxplot() +
   facet_wrap(~FuelCode)
+
+Summary_percentage <- fuel_all %>%
+  select(Brand) %>%
+  group_by(Brand) %>%
+  mutate(number_stations = number <- 1) %>%
+  summarise(number_stations = sum(number_stations)) %>%
+  mutate(percentage = number_stations / 154980 * 100) %>%
+  arrange(desc(number_stations))
