@@ -68,6 +68,8 @@ library(readxl)
 library(knitr)
 library(data.table)
 library(dplyr)
+library(psych)
+library(here)
 
 
 # Import data from local
@@ -97,6 +99,8 @@ Fuel_RAW$date <- as.Date(format(Fuel_RAW$PriceUpdatedDate, "%Y-%m-%d"))
 
 ## merge Fuel_RAW with public holiday
 Fuel_All<- left_join(Fuel_RAW,NSWPublicHoliday,by="date")
+write.csv(Fuel_All, "EDA/fuel_all.csv")
+
 
 ## sample of the merged data
 head(Fuel_All)
@@ -135,7 +139,7 @@ data_list <- as.vector(DuplicateAddress[,1])
 StationsToChk <- Fuel_All[Fuel_All$Address %in% data_list,]
 
 head(StationsToChk,5)
-write.csv(StationsToChk,"StationsToChk.csv")
+write.csv(StationsToChk,"EDA/StationsToChk.csv")
 
 ```
 
