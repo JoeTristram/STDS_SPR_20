@@ -29,12 +29,12 @@ postcode_list <- as.list(levels(factor(fuel_all$Postcode)))
 station_list <- as.list(levels(factor(fuel_all$Brand)))
 
 #Fuel type lists
-standard_unleaded <- list("E10", "U91", "E85")
+standard_unleaded <- list("E10", "U91")
 premium_unleaded <- list("P95", "P98")
-unleaded <- list(standard_unleaded, premium_unleaded)
+unleaded <- append(standard_unleaded, premium_unleaded)
 standard_diesel <-list("DL", "B20")
 premium_diesel <- list("PDL")
-diesel <- list(standard_diesel, premium_diesel)
+diesel <- append(standard_diesel, premium_diesel)
 gas <- list("LPG", "CNG")
 
 # write cleaned data to .csv ---------
@@ -67,6 +67,22 @@ wrangling %>%
   geom_boxplot() +
   facet_wrap(~FuelCode)
 
+# Time series analysis ---------
+
+time_date <- fuel_all %>%
+  select(Brand, Postcode, FuelCode, Price, date) %>%
+  mutate(Day = Day_of_the_week <- weekdays(fuel_all$date)) %>%
+  filter(FuelCode == unleaded) %>%
+  group_by(Postcode, FuelCode, Day) %>%
+  summarise(avg_price = mean(Price))
+
+time_date %>%
+  ggplot(aes(x = Day, y = avg_price)) +
+  geom_boxplot() +
+  facet_wrap(~FuelCode)
+
+# How is the data distrbuted and how do we visualise on a map ---------
+
 Summary_percentage <- fuel_all %>%
   select(Brand) %>%
   group_by(Brand) %>%
@@ -74,3 +90,6 @@ Summary_percentage <- fuel_all %>%
   summarise(number_stations = sum(number_stations)) %>%
   mutate(percentage = number_stations / 154980 * 100) %>%
   arrange(desc(number_stations))
+
+fuel_all %>%
+  count(FuelCode == "E85")
