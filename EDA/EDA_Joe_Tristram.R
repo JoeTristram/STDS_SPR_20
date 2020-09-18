@@ -131,14 +131,17 @@ fuel_all %>%
 
 # Yixin visualisation ---------
 
-ave_price<-aggregate(fuel_all$Price, by=list(fuel_all$date), FUN=mean)
+yixin_fuel_all <- fuel_all %>%
+  filter(FuelCode != "B20", FuelCode != "E85", FuelCode != "EV")
+
+ave_price<-aggregate(yixin_fuel_all$Price, by=list(yixin_fuel_all$date), FUN=mean)
 colnames(ave_price)<-c("Date","average_fuel_price")                  
 
 ggplot(data = ave_price, aes(x = Date, y = average_fuel_price))+
   geom_line(color = "#00AFBB", size = 2) +
   scale_x_date(breaks = date_breaks("months"), labels = date_format("%b"))
 
-code<-aggregate(fuel_all$Price, by=list(fuel_all$FuelCode,fuel_all$date), FUN=mean)
+code<-aggregate(yixin_fuel_all$Price, by=list(yixin_fuel_all$FuelCode,yixin_fuel_all$date), FUN=mean)
 colnames(code)<-c("FuelCode","Date","Average_fuel_price")  
 
 ggplot(data = code, aes(x = Date, y = Average_fuel_price,color = FuelCode))+
