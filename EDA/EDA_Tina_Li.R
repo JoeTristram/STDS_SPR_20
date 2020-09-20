@@ -12,18 +12,26 @@ library(lubridate)
 library(readxl)
 library(here)
 
-Fuel_Jul20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_july2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
-Fuel_Jun20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_june2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
-Fuel_May20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_may2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
-Fuel_Apr20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_apr2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
-Fuel_Mar20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_mar2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
-Fuel_Feb20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_feb2020.xlsx",1,skip=2, col_names = TRUE))%>% fill(everything(), .direction = "down")
+Fuel_Jul20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_july2020.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Jun20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_june2020.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_May20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_may2020.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Apr20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_apr2020.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Mar20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_mar2020.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Feb20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_feb2020.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
 
-NSWPublicHoliday<- read.csv("Public_Holiday_2019-2020\\australian_public_holidays_2020.csv")%>% filter(Jurisdiction=="nsw")
+NSWPublicHoliday<- read.csv("Public_Holiday_2019-2020\\australian_public_holidays_2020.csv")%>% 
+  filter(Jurisdiction=="nsw")
 
 # format date to date and rename column
 NSWPublicHoliday$Date<- ymd(NSWPublicHoliday$Date)
-NSWPublicHoliday<- NSWPublicHoliday%>% rename(date=Date)
+NSWPublicHoliday<- NSWPublicHoliday %>% 
+  rename(date=Date)
 
 ## Combine Fuel data Feb to Jul 20
 Fuel_RAW<- rbind(Fuel_Feb20,Fuel_Mar20,Fuel_Apr20,Fuel_May20,Fuel_Jun20,Fuel_Jul20)
@@ -111,8 +119,8 @@ Before_After_Holiday %>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
-  xlab("Day number to holiday")+
-  ylab("Average Fuel Price")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
   ggtitle("Brand with less than 40 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)
@@ -123,8 +131,8 @@ Before_After_Holiday %>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
-  xlab("Day number to holiday")+
-  ylab("Average Fuel Price")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
   ggtitle("Brand with less than 100 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)
@@ -135,8 +143,8 @@ Before_After_Holiday %>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
-  xlab("Day number to holiday")+
-  ylab("Average Fuel Price")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
   ggtitle("Brand with less than 200 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)  
@@ -147,8 +155,8 @@ Before_After_Holiday %>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
-  xlab("Day number to holiday")+
-  ylab("Average Fuel Price")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
   ggtitle("Brand with less than 400 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1) 
@@ -160,7 +168,7 @@ Before_After_Holiday %>%
 ### premium_unleaded <- list("P95", "P98")
 
 ### Standard_unleaded
-
+#### create subset
 Postcode_fuel_all<- fuel_all%>% 
   filter(FuelCode==standard_unleaded)%>%
   select(Postcode,Price) %>%
@@ -169,11 +177,23 @@ Postcode_fuel_all<- fuel_all%>%
   summarise(postcode_fuel_avg = mean(Price))%>% 
   arrange(postcode_fuel_avg)
 
+
 Postcode_fuel_all$Postcode<- as.factor(Postcode_fuel_all$Postcode)
+
+station_ct_pc <- fuel_all%>% 
+  select(Postcode,Brand,Price,ServiceStationName, FuelCode)%>%
+  mutate(station_id = paste(ServiceStationName,Postcode))%>%
+  group_by(Postcode)%>%
+  summarise(station_ct = n_distinct(station_id))
+
+station_ct_pc$Postcode<- as.factor(station_ct_pc$Postcode)
+Postcode_fuel_all<- left_join(Postcode_fuel_all,station_ct_pc,by="Postcode")
+  
 
 
 ### charts- by Fuel price by postcode on average fuel price over all types and all times
-Postcode_fuel_all%>%tail(5)%>%
+Postcode_fuel_all%>%
+  tail(5)%>%
   ggplot(aes(x = Postcode, y = postcode_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(postcode_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -184,7 +204,8 @@ Postcode_fuel_all%>%tail(5)%>%
   ylab("Average Fuel Price $cent") +
   ggtitle("Most expensive fuel price by Postcode",subtitle = "Standard Unleaded (E10, U91) betw Feb 20 to Jul 20")
 
-Postcode_fuel_all%>%head(5)%>%
+Postcode_fuel_all%>%
+  head(5)%>%
   ggplot(aes(x = Postcode, y = postcode_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(postcode_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -210,7 +231,8 @@ Postcode_fuel_all$Postcode<- as.factor(Postcode_fuel_all$Postcode)
 
 
 ### charts- by Fuel price by postcode on average fuel price over all types and all times
-Postcode_fuel_all%>%tail(5)%>%
+Postcode_fuel_all%>%
+  tail(5)%>%
   ggplot(aes(x = Postcode, y = postcode_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(postcode_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -221,7 +243,8 @@ Postcode_fuel_all%>%tail(5)%>%
   ylab("Average Fuel Price $cent") +
   ggtitle("Most expensive fuel price by Postcode",subtitle = "Premium Unleaded (P98, P95) betw Feb 20 to Jul 20")
 
-Postcode_fuel_all%>%head(5)%>%
+Postcode_fuel_all%>%
+  head(5)%>%
   ggplot(aes(x = Postcode, y = postcode_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(postcode_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -248,7 +271,8 @@ Suburb_fuel_all<- fuel_all%>%
 head(Suburb_fuel_all)
 
 ## Charts on Fuel price by Suburb on average fuel price over all types and all times
-Suburb_fuel_all%>%tail(5)%>%
+Suburb_fuel_all%>%
+  tail(5)%>%
   ggplot(aes(x = Suburb, y = suburb_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(suburb_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -260,7 +284,8 @@ Suburb_fuel_all%>%tail(5)%>%
   ylab("Average Fuel Price $cent") +
   ggtitle("Most expensive fuel price by Suburb",subtitle = "Standard Diesel (DL, B20) betw Feb 20 to Jul 20")
 
-Suburb_fuel_all%>%head(5)%>%
+Suburb_fuel_all%>%
+  head(5)%>%
   ggplot(aes(x = Suburb, y = suburb_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(suburb_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -285,7 +310,8 @@ Suburb_fuel_all<- fuel_all%>%
 head(Suburb_fuel_all)
 
 ## Charts on Fuel price by Suburb on average fuel price over all types and all times
-Suburb_fuel_all%>%tail(5)%>%
+Suburb_fuel_all%>%
+  tail(5)%>%
   ggplot(aes(x = Suburb, y = suburb_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(suburb_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -297,7 +323,8 @@ Suburb_fuel_all%>%tail(5)%>%
   ylab("Average Fuel Price $cent") +
   ggtitle("Most expensive fuel price by Suburb",subtitle = "Premium Diesel (PDL) betw Feb 20 to Jul 20")
 
-Suburb_fuel_all%>%head(5)%>%
+Suburb_fuel_all%>%
+  head(5)%>%
   ggplot(aes(x = Suburb, y = suburb_fuel_avg)) +
   geom_bar(stat = "identity")+
   geom_text(aes(label=round(suburb_fuel_avg, digits = 0)), position=position_dodge(width=0.9), vjust=-0.25,digits = 0)+
@@ -311,7 +338,7 @@ Suburb_fuel_all%>%head(5)%>%
 
 
 
-## Fuel code & postcode- wip
+## Fuel code & postcode -----
 library(tidyverse)
 library(readxl)
 library(here)
@@ -325,3 +352,49 @@ fuelcode_PC <- fuel_all%>%
   group_by(Postcode,FuelCode)%>%
   summarise(pc_avg_fuel_price=mean(Price))%>% 
   spread(FuelCode,pc_avg_fuel_price)
+
+## Fuel Station Postcode vs SA2 -----
+## geocoded address from Google Cloud Platform "Geocoding API", require payment detail to get API key. Max 2500 addresses per day.
+fuel_all <- read.csv(here("EDA","fuel_all.csv"))
+fuel_all$Postcode<- as.character(fuel_all$Postcode)
+str(fuel_all)
+
+# not all addresses can be geocoded
+address_geocoded <- read.csv("Postcode_SA2/address_geocoded.csv")
+
+# one postcode might have 2 suburbs and 2 SA2 codes. eg. postcode 2019, here randomly choose one
+SA2<-read.csv("Postcode_SA2/2019 Locality to 2016 SA2 Coding Index.csv")%>%
+  select(SA2_MAINCODE,POSTCODE,STATE)
+SA2<-SA2[!duplicated(SA2$POSTCODE), ]
+names(SA2)[2] <- "Postcode"
+SA2$Postcode<- as.character(SA2$Postcode)
+str(SA2)
+
+
+# result in 2325, allow same address has different station name
+fuel_station_Aggr <- fuel_all%>%
+  mutate(fulladdress=paste(trimws(Address),"AU"))%>%
+  select(fulladdress,Brand,ServiceStationName,Postcode, Price,FuelCode)%>%
+  group_by(fulladdress,Brand,ServiceStationName,Postcode,FuelCode)%>%
+  summarise(pc_avg_fuel_price=mean(Price))%>%
+  spread(FuelCode,pc_avg_fuel_price)%>%
+  left_join(address_geocoded,by="fulladdress")%>%
+  left_join(SA2, by = "Postcode")
+
+
+fuel_station_Aggr_P98 <- fuel_station_Aggr%>%
+  select(SA2_MAINCODE,P98)
+fuel_station_Aggr_P98 <-fuel_station_Aggr_P98[complete.cases(fuel_station_Aggr_P98), ]
+
+# Shapefile
+#install.packages("sp")
+#install.packages("rgdal")
+library(sp)
+library(rgdal)
+
+SA2<- readOGR("Postcode_SA2\\1270055001_sa2_2016_aust_shape\\SA2_2016_AUST.shp")  
+SA2_NSW<- SA2[SA2$STE_NAME16=="New South Wales", ]  
+plot(SA2_NSW,main="New South Wales")
+
+# Plot shapefile
+## How to plot SA2_NSW with fuel_station_Aggr_P98
