@@ -15,3 +15,9 @@ https://data.gov.au/dataset/ds-dga-b1bc6077-dadd-4f61-9f8c-002ab2cdff10/details?
 
 #### **House Price**
 https://valuation.property.nsw.gov.au/embed/propertySalesInformation
+
+
+#### Suggest codes improvement to investigate
+#### 1. Read Public holiday data directly in R from API
+#### 2. Write function to import multiple Fuel.xlsx files from local folder
+#### 3. Write function to generate charts from a master data set based on list of fuel code
