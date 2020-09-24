@@ -351,20 +351,6 @@ Suburb_fuel_all%>%
 
 
 
-## Fuel code & postcode -----
-library(tidyverse)
-library(readxl)
-library(here)
-library(skimr)
-library(kableExtra)
-
-fuel_all$Postcode<- as.factor(fuel_all$Postcode)
-
-fuelcode_PC <- fuel_all%>% 
-  select(Postcode,Price,FuelCode)%>%
-  group_by(Postcode,FuelCode)%>%
-  summarise(pc_avg_fuel_price=mean(Price))%>% 
-  spread(FuelCode,pc_avg_fuel_price)
 
 ## Fuel Station Postcode vs SA2 -----
 ## geocoded address from Google Cloud Platform "Geocoding API", require payment detail to get API key. Max 2500 addresses per day.
@@ -399,7 +385,7 @@ fuel_station_Aggr_P98 <- fuel_station_Aggr%>%
   select(SA2_MAINCODE,P98)
 fuel_station_Aggr_P98 <-fuel_station_Aggr_P98[complete.cases(fuel_station_Aggr_P98), ]
 
-# Shapefile
+## Shapefile -----
 #install.packages("sp")
 #install.packages("rgdal")
 library(sp)
