@@ -24,6 +24,19 @@ Fuel_Mar20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_m
   fill(everything(), .direction = "down")
 Fuel_Feb20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_feb2020.xlsx",1,skip=2, col_names = TRUE))%>% 
   fill(everything(), .direction = "down")
+Fuel_Jan20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_jan2020.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Dec19<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_dec2019.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Nov19<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_nov2019.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Oct19<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_oct2019.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Sep19<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_sep2019.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+Fuel_Aug19<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_service-station-price-history-aug-2019.xlsx",1,skip=2, col_names = TRUE))%>% 
+  fill(everything(), .direction = "down")
+
 
 NSWPublicHoliday<- read.csv("Public_Holiday_2019-2020\\australian_public_holidays_2020.csv")%>% 
   filter(Jurisdiction=="nsw")
@@ -34,7 +47,7 @@ NSWPublicHoliday<- NSWPublicHoliday %>%
   rename(date=Date)
 
 ## Combine Fuel data Feb to Jul 20
-Fuel_RAW<- rbind(Fuel_Feb20,Fuel_Mar20,Fuel_Apr20,Fuel_May20,Fuel_Jun20,Fuel_Jul20)
+Fuel_RAW<- rbind(Fuel_Aug19,Fuel_Sep19,Fuel_Oct19,Fuel_Nov19,Fuel_Dec19,Fuel_Jan20,Fuel_Feb20,Fuel_Mar20,Fuel_Apr20,Fuel_May20,Fuel_Jun20,Fuel_Jul20)
 Fuel_RAW$PriceUpdatedDate<- dmy_hms(Fuel_RAW$PriceUpdatedDate)
 Fuel_RAW$date <- as.Date(format(Fuel_RAW$PriceUpdatedDate, "%Y-%m-%d"))
 
@@ -45,7 +58,9 @@ write.csv(Fuel_All, "EDA/fuel_all.csv")
 ####################################################
 
 # Load data ------
-fuel_all <- read.csv(here("EDA","fuel_all.csv"))
+fuel_all <- read.csv(here("EDA","fuel_all.csv"))%>%
+  filter(FuelCode=="P98"|FuelCode=="DL"|FuelCode=="LPG")
+
 fuel_all$date<-dmy(fuel_all$date)
 standard_unleaded <- list("E10", "U91")
 premium_unleaded <- list("P95", "P98")
@@ -109,8 +124,6 @@ Before_After_Holiday <-rbind(FiveDaysAfterData, FiveDatePriorData)%>%
 
 # Create charts on 5 days before and after holiday fuel price
 
-# Bug to fix in below chart - how to remove duplicate label "Average Daily Fuel Price" and adjust position on top of red line?
-# ggtitle("Average P98 Price Comparison by Brand with less than 100 stations", subtitle = "5 days Before and After Queen's Birthday June 1st 20")
 # geom_text(aes(day_number[5], daily_avg, label = "Average Daily Fuel Price"),vjust= -3,check_overlap = TRUE, colour = "red", stat = "identity")+
 
 #chart for group_1, brand with less than 40 stations
@@ -397,4 +410,4 @@ SA2_NSW<- SA2[SA2$STE_NAME16=="New South Wales", ]
 plot(SA2_NSW,main="New South Wales")
 
 # Plot shapefile
-## How to plot SA2_NSW with fuel_station_Aggr_P98
+## How to plot SA2_NSW with fuel_station_Aggr_P98???????
