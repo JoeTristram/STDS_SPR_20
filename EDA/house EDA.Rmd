@@ -1,0 +1,66 @@
+---
+title: "house price"
+author: "Yixin Zhang"
+date: "19/09/2020"
+output: html_document
+---
+library(tidyverse)
+library(skimr)
+library(here)
+library(scales)
+library(dplyr)
+library(data.table)
+library(lubridate)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r hosue}
+house_price<-data.table::fread(here("House_Price_Data","Combined_HousePriceFebToJul20.csv"))
+head(house_price)
+```
+
+
+```{r }
+tail(group_by(house_price,`Settlement Date`)%>%count()%>%arrange(-n),10)   ## check outliers
+
+house_price2<-subset(house_price, select=c("Settlement Date","Purchase Price"))%>%
+  filter(`Settlement Date` != "14/03/2020"&`Settlement Date` != "13/04/2020"&`Settlement Date` != "7/06/2020")%>%
+  filter(`Settlement Date`!="1/02/2020"&`Settlement Date` != "23/02/2020"&`Settlement Date` != "15/03/2020")
+
+house_price2$`Settlement Date`=dmy(house_price2$`Settlement Date`)
+
+
+house_price3<-aggregate(house_price2$`Purchase Price`, by=list(house_price2$`Settlement Date`), FUN=median)
+colnames(house_price3)<-c("Settlement Date", "Purchase Price")
+
+ggplot(data=house_price3, aes(x=`Settlement Date`, y=`Purchase Price`))+
+  geom_line(color = "#00AFBB", size = 0.5) +
+  scale_x_date(breaks = date_breaks("months"), labels = date_format("%b"))  
+ 
+
+```
+```{r }
+suburb<-subset(house_price, select=c("Settlement Date","Purchase Price","Postal Code","Property Suburb"))%>%
+  filter(`Settlement Date` != "14/03/2020"&`Settlement Date` != "13/04/2020"&`Settlement Date` != "7/06/2020")%>%
+  filter(`Settlement Date`!="1/02/2020"&`Settlement Date` != "23/02/2020"&`Settlement Date` != "15/03/2020")
+
+suburb$`Settlement Date`=dmy(suburb$`Settlement Date`)
+suburb$`Postal Code`<-as.character(suburb$`Postal Code`)
+
+suburb2<-aggregate(suburb$`Purchase Price`, by=list(suburb$ `Postal Code`), FUN=median)
+colnames(suburb2)<-c("Top 15 Postal_Code", "Median_Price")
+suburb3<-head(suburb2,n=15)
+
+ggplot(data= suburb3, aes(x= reorder(`Top 15 Postal_Code`, -Median_Price),y= Median_Price))+
+    geom_bar(stat="identity", width=0.5,fill="steelblue")
+    
+
+
+ 
+
+```
