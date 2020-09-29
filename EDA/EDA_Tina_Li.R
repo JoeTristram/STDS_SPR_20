@@ -294,6 +294,7 @@ T1FiveDaysPrior<- c(format(seq(as.Date("2020-04-09"), length.out=5, by="-1 day")
 T1FiveDaysAfter<- c(format(seq(as.Date("2020-04-27"), length.out=5, by="1 day"), format="%Y-%m-%d"))
 
 
+
 ### Prep data for plot - 2019 T4 Lead in
 
 T4FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(T4FiveDaysPrior),]%>%
@@ -491,6 +492,120 @@ T1Before_After_Holiday %>%
   ggtitle("Lead in/out 2020 T1 school holiday", subtitle = "Brand with less than 400 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)
+
+
+
+# Prep Data for 2019 XMAX 
+# 2019 Christmas holiday period = 2019-12-05 to 2020-01-06
+XMAX19FiveDaysPrior<- c(format(seq(as.Date("2019-12-04"), length.out=10, by="-1 day"), format="%Y-%m-%d"))
+XMAX19FiveDaysAfter<- c(format(seq(as.Date("2020-01-07"), length.out=10, by="1 day"), format="%Y-%m-%d"))
+
+XMAX19FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysPrior),]%>%
+  filter(FuelCode=="P98")%>%
+  select(date,Brand,Postcode,Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character("2019-12-05"), format="%Y-%m-%d")-as.Date(as.character(date), format="%Y-%m-%d"))%>%
+  mutate (period="Before")
+
+Avg_daily_fuel_price <- XMAX19FiveDatePriorData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+XMAX19FiveDatePriorData<- left_join(XMAX19FiveDatePriorData,Avg_daily_fuel_price,by="date") 
+
+## XMAX19FiveDaysAfterData    
+XMAX19FiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysAfter),]%>%
+  filter(FuelCode=="P98")%>% 
+  select(date,Brand, Postcode, Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character(date), format="%Y-%m-%d")-
+           as.Date(as.character("2020-01-06"), format="%Y-%m-%d"))%>%
+  mutate (period="After")
+
+## Avg daily fuel price of 5 days after will be different from 5 days before
+Avg_daily_fuel_price <- XMAX19FiveDaysAfterData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+XMAX19FiveDaysAfterData<- left_join(XMAX19FiveDaysAfterData,Avg_daily_fuel_price,by="date")
+
+## Combine Before and after
+XMAX19Before_After_Holiday <-rbind(XMAX19FiveDaysAfterData, XMAX19FiveDatePriorData)%>%
+  left_join(brand_station_ct,by="Brand")
+
+XMAX19Before_After_Holiday$peri = factor(XMAX19Before_After_Holiday$period, levels=c("Before","After"))
+
+
+# Create chart for 2019 XMAX 
+### lead in lead out 2019 XMAX school holiday, chart 2019XMAXFivedayLessThan40Brands
+
+XMAX19Before_After_Holiday %>% 
+  filter(station_group=="Group_1")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after school holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 Xmas holiday", subtitle = "Brand with less than 40 stations")+
+  labs(color="Brands")+
+  facet_wrap(~peri,ncol=1)+
+  scale_x_continuous(breaks = seq(1, 10, by = 1))+
+  theme(legend.position="bottom")
+
+
+#chart for group_2, brand with less than 100 stations, chart 2019MAXFivedayLessThan100Brands
+
+XMAX19Before_After_Holiday %>% 
+  filter(station_group=="Group_2")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after school holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 Xmax holiday", subtitle = "Brand with less than 100 stations")+
+  labs(color="Brands")+
+  facet_wrap(~peri,ncol=1)+
+  scale_x_continuous(breaks = seq(1, 10, by = 1))+
+  theme(legend.position="bottom")
+
+
+
+#chart for group_3, brand with less than 200 stations,chart 2019XMAXFivedayLessThan200Brands
+
+XMAX19Before_After_Holiday %>% 
+  filter(station_group=="Group_3")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 Xmax holiday", subtitle = "Brand with less than 200 stations")+
+  labs(color="Brands")+
+  facet_wrap(~peri,ncol=1)+
+  scale_x_continuous(breaks = seq(1, 10, by = 1))+
+  theme(legend.position="bottom") 
+
+
+
+#chart for group_4, brand with less than 400 stations
+
+XMAX19Before_After_Holiday %>% 
+  filter(station_group=="Group_4")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 Xmax holiday", subtitle = "Brand with less than 400 stations")+
+  labs(color="Brands")+
+  facet_wrap(~peri,ncol=1)+
+  scale_x_continuous(breaks = seq(1, 10, by = 1))+
+  theme(legend.position="bottom")
+
+
+
 
 
 
