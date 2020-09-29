@@ -3,15 +3,17 @@ library(tidyverse)
 library(dplyr)
 library(here)
 library(lubridate)
-
+library(readxl)
+#install.packages("sp")
+#install.packages("rgdal")
+library(sp)
+library(rgdal)
+library(leaflet)
+library(leaflet.extras)
+library(ggmap)
 
 ########################################################
-#Import 6 month's fuel data --------
-library(tidyverse)
-library(lubridate)
-library(readxl)
-library(here)
-
+#Import/combine 12 month's fuel data --------
 Fuel_Jul20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_july2020.xlsx",1,skip=2, col_names = TRUE))%>% 
   fill(everything(), .direction = "down")
 Fuel_Jun20<-as.data.frame(read_xlsx("Fuel_2019-2020\\Fuel_price_history_checks_june2020.xlsx",1,skip=2, col_names = TRUE))%>% 
@@ -61,22 +63,37 @@ write.csv(Fuel_All, "EDA/fuel_all.csv")
 fuel_all <- read.csv(here("EDA","fuel_all.csv"))%>%
   filter(FuelCode=="P98"|FuelCode=="DL"|FuelCode=="LPG")
 
-fuel_all$date<-dmy(fuel_all$date)
+fuel_all$date<-ymd(fuel_all$date)
+fuel_all$Price<-as.numeric(fuel_all$Price)
+fuel_all$Postcode<- as.character(fuel_all$Postcode)
+
 standard_unleaded <- list("E10", "U91")
 premium_unleaded <- list("P95", "P98")
 standard_diesel <-list("DL", "B20")
 premium_diesel <- list("PDL")
 
+brand_station_ct <- fuel_all %>% 
+  group_by(Brand)%>%
+  summarise(brand_station_CT = n_distinct(ServiceStationName)) %>%
+  mutate(station_group = ifelse(brand_station_CT < 40, "Group_1", 
+                                ifelse(brand_station_CT < 100, "Group_2", 
+                                       ifelse(brand_station_CT < 200, "Group_3", "Group_4")))) %>%
+  arrange(desc(brand_station_CT))
+
+
+House_data <- read.csv(here("House_Price_Data","Combined_HousePriceFebToJul20.csv"))
 
 # Lead in and Lead out public holiday --------------
 # HolidayToInspect <- as.Date("2020-06-01"), Queens'Birthday
+# HolidayToInspect <- as.Date("2020-01-27"), Australia Day
 # FuelCodeToInspect<-"P98"
 FiveDaysPrior<- c(format(seq(as.Date("2020-05-31"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
 FiveDaysAfter<- c(format(seq(as.Date("2020-06-02"), length.out=5, by="1 day"), format="%Y-%m-%d"))
+AUFiveDaysPrior<- c(format(seq(as.Date("2020-01-26"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
+AUFiveDaysAfter<- c(format(seq(as.Date("2020-01-27"), length.out=5, by="1 day"), format="%Y-%m-%d"))
 
 # create subsets based on date
-## FiveDatePriorData
-
+## FiveDatePriorData - Queen's Birthday
 FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(FiveDaysPrior),]%>%
   filter(FuelCode=="P98")%>%
   select(date,Brand,Postcode,Price) %>%
@@ -101,32 +118,19 @@ FiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(FiveDaysAfter),]%>%
            as.Date(as.character("2020-06-01"), format="%Y-%m-%d"))%>%
   mutate (period="After")
 
-## Avg daily fuel price of 5 days after will be different from 5 days before
 Avg_daily_fuel_price <- FiveDaysAfterData%>% 
   group_by(date)%>%
   summarise(daily_avg = mean(brand_daily_avg))
 
 FiveDaysAfterData<- left_join(FiveDaysAfterData,Avg_daily_fuel_price,by="date")
 
-# create station count by brand and grouping from fuel_all
-brand_station_ct <- fuel_all %>% 
-  group_by(Brand)%>%
-  summarise(brand_station_CT = n_distinct(ServiceStationName)) %>%
-  mutate(station_group = ifelse(brand_station_CT < 40, "Group_1", ifelse(brand_station_CT < 100, "Group_2", ifelse(brand_station_CT < 200, "Group_3", "Group_4")))) %>%
-  arrange(desc(brand_station_CT))
-
-
-# create fuel price data 5 days before and after, then append station count and brand grouping
 Before_After_Holiday <-rbind(FiveDaysAfterData, FiveDatePriorData)%>%
   left_join(brand_station_ct,by="Brand")
 
 
-
 # Create charts on 5 days before and after holiday fuel price
-
-# geom_text(aes(day_number[5], daily_avg, label = "Average Daily Fuel Price"),vjust= -3,check_overlap = TRUE, colour = "red", stat = "identity")+
-
 #chart for group_1, brand with less than 40 stations
+
 Before_After_Holiday %>% 
   filter(station_group=="Group_1")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
@@ -134,11 +138,13 @@ Before_After_Holiday %>%
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Brand with less than 40 stations")+
+  ggtitle("Lead in/out 2020 Queen's Birthday", subtitle = "Brand with less than 40 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)
 
+
 #chart for group_2, brand with less than 100 stations
+
 Before_After_Holiday %>% 
   filter(station_group=="Group_2")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
@@ -146,11 +152,13 @@ Before_After_Holiday %>%
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Brand with less than 100 stations")+
+  ggtitle("Lead in/out 2020 Queen's Birthday", subtitle = "Brand with less than 100 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)
 
+
 #chart for group_3, brand with less than 200 stations
+
 Before_After_Holiday %>% 
   filter(station_group=="Group_3")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
@@ -158,11 +166,13 @@ Before_After_Holiday %>%
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Brand with less than 200 stations")+
+  ggtitle("Lead in/out 2020 Queen's Birthday", subtitle = "Brand with less than 200 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)  
+dev.off()
 
 #chart for group_4, brand with less than 400 stations
+
 Before_After_Holiday %>% 
   filter(station_group=="Group_4")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
@@ -170,12 +180,321 @@ Before_After_Holiday %>%
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Brand with less than 400 stations")+
+  ggtitle("Lead in/out 2020 Queen's Birthday", subtitle = "Brand with less than 400 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1) 
 
 
-## average fuel price by postcode -------
+
+
+## FiveDatePriorData - Australian Day
+AUFiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(AUFiveDaysPrior),]%>%
+  filter(FuelCode=="P98")%>%
+  select(date,Brand,Postcode,Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character("2020-01-27"), format="%Y-%m-%d")-as.Date(as.character(date), format="%Y-%m-%d"))%>%
+  mutate (period="Before")
+
+Avg_daily_fuel_price <- AUFiveDatePriorData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+AUFiveDatePriorData<- left_join(AUFiveDatePriorData,Avg_daily_fuel_price,by="date")
+
+## AUAUFiveDaysAfterData    
+AUFiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(AUFiveDaysAfter),]%>%
+  filter(FuelCode=="P98")%>% 
+  select(date,Brand, Postcode, Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character(date), format="%Y-%m-%d")-
+           as.Date(as.character("2020-01-27"), format="%Y-%m-%d"))%>%
+  mutate (period="After")
+
+Avg_daily_fuel_price <- AUFiveDaysAfterData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+AUFiveDaysAfterData<- left_join(AUFiveDaysAfterData,Avg_daily_fuel_price,by="date")
+
+Before_After_Holiday <-rbind(AUFiveDaysAfterData, AUFiveDatePriorData)%>%
+  left_join(brand_station_ct,by="Brand")
+
+
+# Create charts on 5 days before and after holiday fuel price
+#chart for group_1, brand with less than 40 stations
+
+Before_After_Holiday %>% 
+  filter(station_group=="Group_1")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 Australian Day", subtitle = "Brand with less than 40 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+
+#chart for group_2, brand with less than 100 stations
+
+Before_After_Holiday %>% 
+  filter(station_group=="Group_2")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 Australian Day", subtitle = "Brand with less than 100 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+
+#chart for group_3, brand with less than 200 stations
+
+
+Before_After_Holiday %>% 
+  filter(station_group=="Group_3")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 Australian Day", subtitle = "Brand with less than 200 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)  
+
+
+#chart for group_4, brand with less than 400 stations
+
+Before_After_Holiday %>% 
+  filter(station_group=="Group_4")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 Australian Day", subtitle = "Brand with less than 400 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1) 
+
+
+
+# Lead in and Lead out school holiday --------------
+# https://education.nsw.gov.au/public-schools/going-to-a-public-school/calendars
+# 2019 Term 4, From 14/10/2019 to 20/12/2019
+# 2019 Term 4 school holiday, start from 21/12/2019 to 28/1/2020
+# 2020 Term 1, From 28/01/2020 to 09/04/2020 
+# 2020 Term 1 school holiday, start from 10/04/2020 to 26/4/2020
+
+T4FiveDaysPrior<- c(format(seq(as.Date("2019-12-20"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
+T4FiveDaysAfter<- c(format(seq(as.Date("2020-01-29"), length.out=5, by="1 day"), format="%Y-%m-%d"))
+T1FiveDaysPrior<- c(format(seq(as.Date("2020-04-09"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
+T1FiveDaysAfter<- c(format(seq(as.Date("2020-04-27"), length.out=5, by="1 day"), format="%Y-%m-%d"))
+
+
+### Prep data for plot - 2019 T4 Lead in
+
+T4FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(T4FiveDaysPrior),]%>%
+  filter(FuelCode=="P98")%>%
+  select(date,Brand,Postcode,Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character("2019-12-21"), format="%Y-%m-%d")-as.Date(as.character(date), format="%Y-%m-%d"))%>%
+  mutate (period="Before")
+
+Avg_daily_fuel_price <- T4FiveDatePriorData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+T4FiveDatePriorData<- left_join(T4FiveDatePriorData,Avg_daily_fuel_price,by="date") 
+
+## T1FiveDaysAfterData    
+T4FiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(T4FiveDaysAfter),]%>%
+  filter(FuelCode=="P98")%>% 
+  select(date,Brand, Postcode, Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character(date), format="%Y-%m-%d")-
+           as.Date(as.character("2020-01-28"), format="%Y-%m-%d"))%>%
+  mutate (period="After")
+
+## Avg daily fuel price of 5 days after will be different from 5 days before
+Avg_daily_fuel_price <- T4FiveDaysAfterData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+T4FiveDaysAfterData<- left_join(T4FiveDaysAfterData,Avg_daily_fuel_price,by="date")
+
+## Combine Before and after
+T4Before_After_Holiday <-rbind(T4FiveDaysAfterData, T4FiveDatePriorData)%>%
+  left_join(brand_station_ct,by="Brand")
+
+
+
+
+### Ploting
+### lead in lead out 2019 T4 school holiday, chart 2019T4FivedayLessThan40Brands
+
+
+T4Before_After_Holiday %>% 
+  filter(station_group=="Group_1")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after school holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 T4 school holiday", subtitle = "Brand with less than 40 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+
+#chart for group_2, brand with less than 100 stations, chart 2019T4FivedayLessThan100Brands
+
+T4Before_After_Holiday %>% 
+  filter(station_group=="Group_2")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after school holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 T4 school holiday", subtitle = "Brand with less than 100 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+
+
+#chart for group_3, brand with less than 200 stations,chart 2019T4FivedayLessThan200Brands
+
+
+T4Before_After_Holiday %>% 
+  filter(station_group=="Group_3")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 T4 school holiday", subtitle = "Brand with less than 200 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)  
+
+
+
+#chart for group_4, brand with less than 400 stations
+
+
+T4Before_After_Holiday %>% 
+  filter(station_group=="Group_4")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2019 T4 school holiday", subtitle = "Brand with less than 400 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+
+
+
+### Prep data for plot - 2020 T1 
+
+T1FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(T1FiveDaysPrior),]%>%
+  filter(FuelCode=="P98")%>%
+  select(date,Brand,Postcode,Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character("2020-04-10"), format="%Y-%m-%d")-as.Date(as.character(date), format="%Y-%m-%d"))%>%
+  mutate (period="Before")
+
+Avg_daily_fuel_price <- T1FiveDatePriorData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+T1FiveDatePriorData<- left_join(T1FiveDatePriorData,Avg_daily_fuel_price,by="date") 
+
+## T1FiveDaysAfterData    
+T1FiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(T1FiveDaysAfter),]%>%
+  filter(FuelCode=="P98")%>% 
+  select(date,Brand, Postcode, Price) %>%
+  group_by(date,Brand)%>%
+  summarise(brand_daily_avg = mean(Price))%>%
+  mutate(day_number = as.Date(as.character(date), format="%Y-%m-%d")-
+           as.Date(as.character("2020-04-26"), format="%Y-%m-%d"))%>%
+  mutate (period="After")
+
+## Avg daily fuel price of 5 days after will be different from 5 days before
+Avg_daily_fuel_price <- T1FiveDaysAfterData%>% 
+  group_by(date)%>%
+  summarise(daily_avg = mean(brand_daily_avg))
+
+T1FiveDaysAfterData<- left_join(T1FiveDaysAfterData,Avg_daily_fuel_price,by="date")
+
+## Combine Before and after
+T1Before_After_Holiday <-rbind(T1FiveDaysAfterData, T1FiveDatePriorData)%>%
+  left_join(brand_station_ct,by="Brand")
+
+
+
+
+### Ploting
+### lead in lead out 2020 T1 school holiday, chart 2020T1FivedayLessThan40Brands
+
+T1Before_After_Holiday %>% 
+  filter(station_group=="Group_1")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after school holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 T1 school holiday", subtitle = "Brand with less than 40 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+#chart for group_2, brand with less than 100 stations, chart 2020T1FivedayLessThan100Brands
+
+T1Before_After_Holiday %>% 
+  filter(station_group=="Group_2")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after school holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 T1 school holiday", subtitle = "Brand with less than 100 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+
+
+#chart for group_3, brand with less than 200 stations,chart 2020T1FivedayLessThan200Brands
+T1Before_After_Holiday %>% 
+  filter(station_group=="Group_3")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 T1 school holiday", subtitle = "Brand with less than 200 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)  
+
+
+#chart for group_4, brand with less than 400 stations
+T1Before_After_Holiday %>% 
+  filter(station_group=="Group_4")%>%
+  ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
+  geom_line(aes(color=Brand))+
+  geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
+  xlab("# days before/after holiday")+
+  ylab("Average Fuel Price $cent")+
+  ggtitle("Lead in/out 2020 T1 school holiday", subtitle = "Brand with less than 400 stations")+
+  labs(color="Brands")+
+  facet_wrap(~period,ncol=1)
+
+
+
+# average fuel price by fuel type by postcode -------
 
 ### standard_unleaded <- list("E10", "U91")
 ### premium_unleaded <- list("P95", "P98")
@@ -269,7 +588,7 @@ Postcode_fuel_all%>%
   ggtitle("Least expensive fuel price by Postcode",subtitle = "Premium Unleaded (P98, P95) betw Feb 20 to Jul 20")
 
 
-## average fuel price by suburb -------
+# average fuel price by fuel type by suburb -------
 ## standard_diesel <-list("DL", "B20")
 ## premium_diesel <- list("PDL")
 
@@ -352,16 +671,12 @@ Suburb_fuel_all%>%
 
 
 
-## Fuel Station Postcode vs SA2 -----
-## geocoded address from Google Cloud Platform "Geocoding API", require payment detail to get API key. Max 2500 addresses per day.
-fuel_all <- read.csv(here("EDA","fuel_all.csv"))
-fuel_all$Postcode<- as.character(fuel_all$Postcode)
-str(fuel_all)
+# Fuel Station Postcode vs SA2 -----
 
-# not all addresses can be geocoded
+# not all addresses can be geocoded. Convert street address to lat and lon from Google Cloud Platform "Geocoding API", require payment detail to get API key. Max 2500 addresses per day.
 address_geocoded <- read.csv("Postcode_SA2/address_geocoded.csv")
 
-# one postcode might have 2 suburbs and 2 SA2 codes. eg. postcode 2019, here randomly choose one
+# one postcode might have 1+ suburbs and 1+ SA2 codes. eg. postcode 2019, here randomly choose one, need to decide if we are using this
 SA2<-read.csv("Postcode_SA2/2019 Locality to 2016 SA2 Coding Index.csv")%>%
   select(SA2_MAINCODE,POSTCODE,STATE)
 SA2<-SA2[!duplicated(SA2$POSTCODE), ]
@@ -370,7 +685,7 @@ SA2$Postcode<- as.character(SA2$Postcode)
 str(SA2)
 
 
-# result in 2325, allow same address has different station name
+# Table for average fuel price on each types by stations, append lat and lon and SA2 code 
 fuel_station_Aggr <- fuel_all%>%
   mutate(fulladdress=paste(trimws(Address),"AU"))%>%
   select(fulladdress,Brand,ServiceStationName,Postcode, Price,FuelCode)%>%
@@ -385,15 +700,41 @@ fuel_station_Aggr_P98 <- fuel_station_Aggr%>%
   select(SA2_MAINCODE,P98)
 fuel_station_Aggr_P98 <-fuel_station_Aggr_P98[complete.cases(fuel_station_Aggr_P98), ]
 
-## Shapefile -----
-#install.packages("sp")
-#install.packages("rgdal")
-library(sp)
-library(rgdal)
+# Import Shapefile -----
 
 SA2<- readOGR("Postcode_SA2\\1270055001_sa2_2016_aust_shape\\SA2_2016_AUST.shp")  
 SA2_NSW<- SA2[SA2$STE_NAME16=="New South Wales", ]  
-plot(SA2_NSW,main="New South Wales")
+#plot(SA2_NSW,main="New South Wales")
 
-# Plot shapefile
+# Plot Shapefile -----
+##Yixin's code - start
+register_google(key = "AIzaSyB1Fccl9sZOEUWC0NISGPdW5pclAp6vyo0")
+
+shapefile2<- SA2_NSW 
+
+stationlist<-subset(fuel_all, select = c(Address,Suburb,Postcode,Brand,ServiceStationName,FuelCode))%>%
+  unique()%>%
+  filter(FuelCode=="P98")
+
+## Plot stations in NSW
+latlon<-mutate_geocode(stationlist, Address)
+
+write.csv(latlon, "EDA/station_latlon.csv") # this is all lat and lon for stations sold P98
+
+latlon <- read.csv(here("EDA","station_latlon.csv"))
+
+leaflet(latlon) %>% 
+  addTiles() %>%
+  addMarkers(~lon, ~lat,popup=~ServiceStationName,clusterOptions = markerClusterOptions())%>%
+  addPolygons(data = shapefile2) ##default map= openstreet map
+
+##Yixin's code - End
+
+## Heat map on station count in NSW
+
+## Heat map on average P98 price in NSW
+
+## Heat map on house median price in NSW
+
+
 ## How to plot SA2_NSW with fuel_station_Aggr_P98???????
