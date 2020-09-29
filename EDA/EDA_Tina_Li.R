@@ -496,8 +496,8 @@ T1Before_After_Holiday %>%
 
 
 # Prep Data for 2019 XMAX 
-# 2019 Christmas holiday period = 2019-12-05 to 2020-01-06
-XMAX19FiveDaysPrior<- c(format(seq(as.Date("2019-12-04"), length.out=10, by="-1 day"), format="%Y-%m-%d"))
+# 2019 Christmas holiday period = 2019-12-24 to 2020-01-06
+XMAX19FiveDaysPrior<- c(format(seq(as.Date("2019-12-23"), length.out=10, by="-1 day"), format="%Y-%m-%d"))
 XMAX19FiveDaysAfter<- c(format(seq(as.Date("2020-01-07"), length.out=10, by="1 day"), format="%Y-%m-%d"))
 
 XMAX19FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysPrior),]%>%
@@ -505,7 +505,7 @@ XMAX19FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysPrior
   select(date,Brand,Postcode,Price) %>%
   group_by(date,Brand)%>%
   summarise(brand_daily_avg = mean(Price))%>%
-  mutate(day_number = as.Date(as.character("2019-12-05"), format="%Y-%m-%d")-as.Date(as.character(date), format="%Y-%m-%d"))%>%
+  mutate(day_number = as.Date(as.character("2019-12-24"), format="%Y-%m-%d")-as.Date(as.character(date), format="%Y-%m-%d"))%>%
   mutate (period="Before")
 
 Avg_daily_fuel_price <- XMAX19FiveDatePriorData%>% 
