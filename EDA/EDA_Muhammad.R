@@ -121,6 +121,10 @@ lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_DL)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_DL)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_DL)
 
+# *** GLM model for DL - Average House price -----
+
+glm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_DL, family="gaussian")
+
 # ** LPG ----
 com_House_fuel_station_LPG %>%
   ggplot(aes(x = avg_house_price, y = avg_fuel_price, colour = station_group ) ) +
