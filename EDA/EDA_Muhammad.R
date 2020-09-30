@@ -140,9 +140,29 @@ lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
 
+#Group for ------
+brand_and_fuel_price <- fuel_all %>% 
+  select(Brand,Price,Postcode) %>%
+  mutate(Brand=as.factor(Brand)) %>%
+  group_by(Brand, Postcode) %>%
+  summarize(avg_fuel_price = mean(Price))
+
+glm(avg_fuel_price ~ Brand,  data=brand_and_fuel_price) %>%
+  summary()
+
+
+
 # *** GLM model for LPG - Average House price -----
 
-glm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG, family="gaussian")
+#model1 <- glm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG, family="gaussian")
+#predict(model1, type="response") 
+
+
+
+glm(avg_fuel_price ~ avg_house_price, family=binomial, data=com_House_fuel_station_LPG) %>%
+  summary()
+
+
 
 # * Median house house -------- 
 
