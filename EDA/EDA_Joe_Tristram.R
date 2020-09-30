@@ -29,7 +29,7 @@ fuel_type_list <- as.list(levels(factor(fuel_all$FuelCode)))
 postcode_list <- as.list(levels(factor(fuel_all$Postcode)))
 station_list <- as.list(levels(factor(fuel_all$Brand)))
 day_order <- c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
-month_order <- c('January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September', 'October', 'November', 'December')
+month_order <- c('August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May','June', 'July')
 
 #Fuel type lists
 standard_unleaded <- list("E10", "U91")
@@ -154,3 +154,4 @@ ggplot(data = code, aes(x = Date, y = Average_fuel_price,color = FuelCode))+
 #
 # ggplot(data=StationsToChk,mapping=aes(x=Price))+
 #   geom_freqpoly(mapping= aes(colour = Brand), binwidth=3) 
+
