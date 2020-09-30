@@ -140,7 +140,22 @@ lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
 
-#Group for ------
+
+
+# *** GLM model for LPG - Average House price -----
+
+#model1 <- glm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG, family="gaussian")
+#predict(model1, type="response") 
+
+model1 <- glm(avg_fuel_price ~ avg_house_price , data=com_House_fuel_station_LPG)
+predict(model1, type="response")
+
+glm(as.factor(avg_fuel_price) ~ as.factor(avg_house_price), family=binomial, data=com_House_fuel_station_LPG) %>%
+  summary()
+
+
+# *** Group for GLM ------
+
 brand_and_fuel_price <- fuel_all %>% 
   select(Brand,Price,Postcode) %>%
   mutate(Brand=as.factor(Brand)) %>%
@@ -150,16 +165,30 @@ brand_and_fuel_price <- fuel_all %>%
 glm(avg_fuel_price ~ Brand,  data=brand_and_fuel_price) %>%
   summary()
 
+# **** Group for GLM By Group Station------
+
+brand_station_ct_price <- fuel_all %>%
+  group_by(Brand,Price)%>%
+  summarise(brand_station_CT = n_distinct(ServiceStationName)) %>%
+  mutate(station_group = ifelse(brand_station_CT < 40, "Group_1", ifelse(brand_station_CT < 100, "Group_2", ifelse(brand_station_CT < 200, "Group_3", "Group_4")))) %>%
+  arrange(desc(brand_station_CT))
+
+glm(as.factor(Price + 0) ~ as.factor(station_group), family=binomial, data=brand_station_ct_price) %>%
+  summary()
+
+# ******** testing---------------------------
+
+# ******** GLM by Type DL ---------------------------
+
+brand_station_ct_price_DL <- fuel_all %>%
+  filter(FuelCode == "DL") %>%
+  group_by(FuelCode, Brand, Postcode) %>%
+  summarise(avg_fuel_price = mean(Price), brand_station_CT = n_distinct(ServiceStationName)) %>%
+  mutate(station_group = ifelse(brand_station_CT < 40, "Group_1", ifelse(brand_station_CT < 100, "Group_2", ifelse(brand_station_CT < 200, "Group_3", "Group_4")))) %>%
+  arrange(desc(brand_station_CT))
 
 
-# *** GLM model for LPG - Average House price -----
-
-#model1 <- glm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG, family="gaussian")
-#predict(model1, type="response") 
-
-
-
-glm(avg_fuel_price ~ avg_house_price, family=binomial, data=com_House_fuel_station_LPG) %>%
+glm(as.factor(avg_fuel_price) ~ as.factor(Brand), family=binomial, data=brand_station_ct_price_DL) %>%
   summary()
 
 
