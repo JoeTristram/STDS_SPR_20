@@ -140,6 +140,9 @@ lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
 
+# *** GLM model for LPG - Average House price -----
+
+glm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG, family="gaussian")
 
 # * Median house house -------- 
 
