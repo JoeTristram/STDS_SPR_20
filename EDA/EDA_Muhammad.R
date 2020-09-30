@@ -105,9 +105,7 @@ lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_P98)
 
 # *** GLM model for P98 - Average House price -----
 
-modelglm <- glm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_P98 , family = "gaussian")
-confint(modelglm)
-
+glm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_P98, family="gaussian")
 
 # ** DL ----
 com_House_fuel_station_DL %>%
@@ -122,11 +120,6 @@ com_House_fuel_station_DL %>%
 lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_DL)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_DL)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_DL)
-
-# *** GLM model for DL - Average House price -----
-
-modelglm <- glm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_DL , family = "gaussian")
-confint(modelglm)
 
 # ** LPG ----
 com_House_fuel_station_LPG %>%
@@ -228,7 +221,6 @@ com_House_fuel_station_DL %>%
 lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_DL)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_DL)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_DL)
-
 
 
 # ** LPG -----
