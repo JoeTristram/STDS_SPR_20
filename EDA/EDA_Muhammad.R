@@ -176,21 +176,19 @@ brand_station_ct_price <- fuel_all %>%
 glm(as.factor(Price + 0) ~ as.factor(station_group), family=binomial, data=brand_station_ct_price) %>%
   summary()
 
-# ******** testing---------------------------
 
-# ******** GLM by Type DL ---------------------------
+# ******* testing---------------------------
 
-brand_station_ct_price_DL <- fuel_all %>%
-  filter(FuelCode == "DL") %>%
-  group_by(FuelCode, Brand, Postcode) %>%
-  summarise(avg_fuel_price = mean(Price), brand_station_CT = n_distinct(ServiceStationName)) %>%
-  mutate(station_group = ifelse(brand_station_CT < 40, "Group_1", ifelse(brand_station_CT < 100, "Group_2", ifelse(brand_station_CT < 200, "Group_3", "Group_4")))) %>%
-  arrange(desc(brand_station_CT))
+# ** GLM by Type DL ---------------------------
 
-
-glm(as.factor(avg_fuel_price) ~ as.factor(Brand), family=binomial, data=brand_station_ct_price_DL) %>%
+glm(as.factor(avg_house_price + 0) ~ as.factor(Brand), family=binomial, data=com_House_fuel_DL) %>%
   summary()
-
+# ** GLM by Type P98 ---------------------------
+glm(as.factor(avg_house_price + 0) ~ as.factor(Brand), family=binomial, data=com_House_fuel_P98) %>%
+  summary()
+# ** GLM by Type LPG ---------------------------
+glm(as.factor(avg_house_price + 0) ~ as.factor(Brand), family=binomial, data=com_House_fuel_LPG) %>%
+  summary()
 
 
 # * Median house house -------- 
