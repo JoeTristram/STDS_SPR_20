@@ -107,7 +107,7 @@ time_date_month %>%
   geom_boxplot() +
   facet_wrap(~FuelCode)
 
-  mutate(Quarter = quarter <- quarters(fuel_all$date)) %>%
+  mutate(Quarter = quarter <- quarters(fuel_all$date))
 
 # How is the data distrbuted and how do we visualise on a map ---------
 
@@ -179,3 +179,4 @@ plot(as.ts(random_fuel))
 
 recomposed_fuel = trend_fuel*seasonal_fuel*random_fuel
 plot(as.ts(recomposed_fuel))
+
