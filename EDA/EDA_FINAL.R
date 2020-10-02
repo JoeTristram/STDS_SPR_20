@@ -4,6 +4,8 @@ library(skimr)
 library(here)
 library(scales)
 library(ggpubr)
+library(Ecdat)
+library(forecast)
 
 # read in data --------
 
@@ -63,6 +65,8 @@ fuel_avg_sep <- ggplot(data = code, aes(x = Date, y = Average_fuel_price,color =
   theme(legend.position = "top") +
   labs(y= "Average Fuel Price (Cents)", x = "Date")
 
+# * Figure 1 ----
+
 figure1 <- ggarrange(fuel_avg_all, fuel_avg_sep,
                      labels = c("A", "B"),
                      nrow = 2)
@@ -70,6 +74,8 @@ figure1
 
 
 # Seasonality of fuel price ---------
+
+# * Daily data ----
 
 time_date_day <- fuel_all %>%
   select(Brand, Postcode, FuelCode, Price, date) %>%
@@ -100,10 +106,14 @@ daily_lpg <- time_date_day %>%
   ggplot(aes(x = Day, y = avg_price)) +
   geom_boxplot()
 
+# * Figure 2 ----
+
 figure2 <- ggarrange(daily_p98, daily_dl, daily_lpg,
                      labels = c("A", "B", "C"),
                      ncol = 2, nrow = 2)
 figure2
+
+# * Monthly data ----
 
 time_date_month <- fuel_all %>%
   select(Brand, Postcode, FuelCode, Price, date) %>%
@@ -119,8 +129,29 @@ time_date_month %>%
   geom_boxplot() +
   facet_wrap(~FuelCode)
 
+monthly_dl <- time_date_month %>%
+  filter(FuelCode == "DL") %>%
+  ggplot(aes(x = Month, y = avg_price)) +
+  geom_boxplot()
+
+monthly_p98 <- time_date_month %>%
+  filter(FuelCode == "P98") %>%
+  ggplot(aes(x = Month, y = avg_price)) +
+  geom_boxplot()
+
+monthly_lpg <- time_date_month %>%
+  filter(FuelCode == "LPG") %>%
+  ggplot(aes(x = Month, y = avg_price)) +
+  geom_boxplot()
+
 mutate(Quarter = quarter <- quarters(fuel_all$date))
 
+# * Figure 3 ----
+
+figure3 <- ggarrange(monthly_p98, monthly_dl, monthly_lpg,
+                     labels = c("A", "B", "C"),
+                     ncol = 2, nrow = 2)
+figure3
 
 # Fuel Price variation ---------
 
