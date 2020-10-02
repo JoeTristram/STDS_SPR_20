@@ -85,6 +85,26 @@ time_date_day %>%
   geom_boxplot() +
   facet_wrap(~FuelCode)
 
+daily_dl <- time_date_day %>%
+  filter(FuelCode == "DL") %>%
+  ggplot(aes(x = Day, y = avg_price)) +
+  geom_boxplot()
+
+daily_p98 <- time_date_day %>%
+  filter(FuelCode == "P98") %>%
+  ggplot(aes(x = Day, y = avg_price)) +
+  geom_boxplot()
+
+daily_lpg <- time_date_day %>%
+  filter(FuelCode == "LPG") %>%
+  ggplot(aes(x = Day, y = avg_price)) +
+  geom_boxplot()
+
+figure2 <- ggarrange(daily_p98, daily_dl, daily_lpg,
+                     labels = c("A", "B", "C"),
+                     ncol = 2, nrow = 2)
+figure2
+
 time_date_month <- fuel_all %>%
   select(Brand, Postcode, FuelCode, Price, date) %>%
   mutate(Month = month <- months(fuel_all$date)) %>%
@@ -134,10 +154,10 @@ P98 <- average_fuel_price %>%
   ggtitle("Average Fuel Price", subtitle = "(Fuel Type: P98)") +
   labs(y= "Brand", x = "Average Fuel Price (Cents)")
 
-figure2 <- ggarrange(P98, DL, LPG,
+figure4 <- ggarrange(P98, DL, LPG,
                     labels = c("A", "B", "C"),
                     ncol = 2, nrow = 2)
-figure2
+figure4
 
 
 # Trend analysis ---------
