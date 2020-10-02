@@ -42,3 +42,13 @@ fuel_all <- fuel_all%>%
          Day = Day_of_the_week <- weekdays(date))%>%
   filter(FuelCode=="P98"|FuelCode=="DL"|FuelCode=="LPG")
 ## end
+
+## reformat data type start
+#fuel_all$PriceUpdatedDate<- dmy_hms(fuel_all$PriceUpdatedDate)
+
+fuel_all$date<-ymd(fuel_all$date)
+
+fuel_all$Price<-as.numeric(fuel_all$Price)
+
+fuel_all$Postcode<- as.character(fuel_all$Postcode)
+## end 
