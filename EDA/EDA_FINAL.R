@@ -9,7 +9,8 @@ library(forecast)
 
 # read in data --------
 
-fuel_all <- read_csv(here("EDA","fuel_all.csv"))
+fuel_all <- read_csv(here("Fuel_2019-2020","fuel_all.csv"))
+fuel_all <- fuel_all[!is.na(fuel_all$date), ]
 
 
 # new variables for EDA ---------
@@ -18,7 +19,7 @@ fuel_type_list <- as.list(levels(factor(fuel_all$FuelCode)))
 postcode_list <- as.list(levels(factor(fuel_all$Postcode)))
 station_list <- as.list(levels(factor(fuel_all$Brand)))
 day_order <- c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
-month_order <- c('August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May','June', 'July')
+month_order <- c('January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September', 'October', 'November', 'December')
 
 
 # write cleaned data to .csv ---------
@@ -216,6 +217,10 @@ plot(as.ts(random_fuel))
 recomposed_fuel = trend_fuel*seasonal_fuel*random_fuel
 plot(as.ts(recomposed_fuel))
 
+figure5 <- ggarrange(seasonal_fuel, random_fuel,
+                     labels = c("A", "B"),
+                     nrow = 2)
+figure5
 
 # Test area for playing around with the dataset ---------
 
@@ -231,3 +236,4 @@ wrangling$Brand <- factor(wrangling$Brand, levels = levels(fac))
 wrangling %>%
   ggplot(aes(x = avg_price, y = Brand)) +
   geom_boxplot()
+

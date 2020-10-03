@@ -11,6 +11,7 @@ library(rgdal)
 library(leaflet)
 library(leaflet.extras)
 library(ggmap)
+library(ggpubr)
 
 ########################################################
 #Import/combine 12 month's fuel data --------
@@ -131,7 +132,7 @@ Before_After_Holiday <-rbind(FiveDaysAfterData, FiveDatePriorData)%>%
 # Create charts on 5 days before and after holiday fuel price
 #chart for group_1, brand with less than 40 stations
 
-Before_After_Holiday %>% 
+QB_40 <- Before_After_Holiday %>% 
   filter(station_group=="Group_1")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -145,7 +146,7 @@ Before_After_Holiday %>%
 
 #chart for group_2, brand with less than 100 stations
 
-Before_After_Holiday %>% 
+QB_100 <- Before_After_Holiday %>% 
   filter(station_group=="Group_2")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -159,7 +160,7 @@ Before_After_Holiday %>%
 
 #chart for group_3, brand with less than 200 stations
 
-Before_After_Holiday %>% 
+QB_200 <- Before_After_Holiday %>% 
   filter(station_group=="Group_3")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -173,7 +174,7 @@ dev.off()
 
 #chart for group_4, brand with less than 400 stations
 
-Before_After_Holiday %>% 
+QB_400 <- Before_After_Holiday %>% 
   filter(station_group=="Group_4")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -225,7 +226,7 @@ Before_After_Holiday <-rbind(AUFiveDaysAfterData, AUFiveDatePriorData)%>%
 # Create charts on 5 days before and after holiday fuel price
 #chart for group_1, brand with less than 40 stations
 
-Before_After_Holiday %>% 
+AD_40 <- Before_After_Holiday %>% 
   filter(station_group=="Group_1")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -239,7 +240,7 @@ Before_After_Holiday %>%
 
 #chart for group_2, brand with less than 100 stations
 
-Before_After_Holiday %>% 
+AD_100 <- Before_After_Holiday %>% 
   filter(station_group=="Group_2")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -254,7 +255,7 @@ Before_After_Holiday %>%
 #chart for group_3, brand with less than 200 stations
 
 
-Before_After_Holiday %>% 
+AD_200 <- Before_After_Holiday %>% 
   filter(station_group=="Group_3")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -268,7 +269,7 @@ Before_After_Holiday %>%
 
 #chart for group_4, brand with less than 400 stations
 
-Before_After_Holiday %>% 
+AD_400 <- Before_After_Holiday %>% 
   filter(station_group=="Group_4")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -339,7 +340,7 @@ T4Before_After_Holiday <-rbind(T4FiveDaysAfterData, T4FiveDatePriorData)%>%
 ### lead in lead out 2019 T4 school holiday, chart 2019T4FivedayLessThan40Brands
 
 
-T4Before_After_Holiday %>% 
+T4_40 <- T4Before_After_Holiday %>% 
   filter(station_group=="Group_1")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -353,7 +354,7 @@ T4Before_After_Holiday %>%
 
 #chart for group_2, brand with less than 100 stations, chart 2019T4FivedayLessThan100Brands
 
-T4Before_After_Holiday %>% 
+T4_100 <- T4Before_After_Holiday %>% 
   filter(station_group=="Group_2")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -369,7 +370,7 @@ T4Before_After_Holiday %>%
 #chart for group_3, brand with less than 200 stations,chart 2019T4FivedayLessThan200Brands
 
 
-T4Before_After_Holiday %>% 
+T4_200 <- T4Before_After_Holiday %>% 
   filter(station_group=="Group_3")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -385,7 +386,7 @@ T4Before_After_Holiday %>%
 #chart for group_4, brand with less than 400 stations
 
 
-T4Before_After_Holiday %>% 
+T4_400 <- T4Before_After_Holiday %>% 
   filter(station_group=="Group_4")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -442,7 +443,7 @@ T1Before_After_Holiday <-rbind(T1FiveDaysAfterData, T1FiveDatePriorData)%>%
 ### Ploting
 ### lead in lead out 2020 T1 school holiday, chart 2020T1FivedayLessThan40Brands
 
-T1Before_After_Holiday %>% 
+T1_40 <- T1Before_After_Holiday %>% 
   filter(station_group=="Group_1")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -455,7 +456,7 @@ T1Before_After_Holiday %>%
 
 #chart for group_2, brand with less than 100 stations, chart 2020T1FivedayLessThan100Brands
 
-T1Before_After_Holiday %>% 
+T1_100 <- T1Before_After_Holiday %>% 
   filter(station_group=="Group_2")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -469,7 +470,7 @@ T1Before_After_Holiday %>%
 
 
 #chart for group_3, brand with less than 200 stations,chart 2020T1FivedayLessThan200Brands
-T1Before_After_Holiday %>% 
+T1_200 <- T1Before_After_Holiday %>% 
   filter(station_group=="Group_3")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -482,7 +483,7 @@ T1Before_After_Holiday %>%
 
 
 #chart for group_4, brand with less than 400 stations
-T1Before_After_Holiday %>% 
+T1_400 <- T1Before_After_Holiday %>% 
   filter(station_group=="Group_4")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -495,12 +496,12 @@ T1Before_After_Holiday %>%
 
 
 
-# Prep Data for 2019 XMAX 
+# Prep Data for 2019 XMAS 
 # 2019 Christmas holiday period = 2019-12-24 to 2020-01-06
-XMAX19FiveDaysPrior<- c(format(seq(as.Date("2019-12-23"), length.out=10, by="-1 day"), format="%Y-%m-%d"))
-XMAX19FiveDaysAfter<- c(format(seq(as.Date("2020-01-07"), length.out=10, by="1 day"), format="%Y-%m-%d"))
+XMAS19FiveDaysPrior<- c(format(seq(as.Date("2019-12-23"), length.out=10, by="-1 day"), format="%Y-%m-%d"))
+XMAS19FiveDaysAfter<- c(format(seq(as.Date("2020-01-07"), length.out=10, by="1 day"), format="%Y-%m-%d"))
 
-XMAX19FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysPrior),]%>%
+XMAS19FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(XMAS19FiveDaysPrior),]%>%
   filter(FuelCode=="P98")%>%
   select(date,Brand,Postcode,Price) %>%
   group_by(date,Brand)%>%
@@ -508,14 +509,14 @@ XMAX19FiveDatePriorData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysPrior
   mutate(day_number = as.Date(as.character("2019-12-24"), format="%Y-%m-%d")-as.Date(as.character(date), format="%Y-%m-%d"))%>%
   mutate (period="Before")
 
-Avg_daily_fuel_price <- XMAX19FiveDatePriorData%>% 
+Avg_daily_fuel_price <- XMAS19FiveDatePriorData%>% 
   group_by(date)%>%
   summarise(daily_avg = mean(brand_daily_avg))
 
-XMAX19FiveDatePriorData<- left_join(XMAX19FiveDatePriorData,Avg_daily_fuel_price,by="date") 
+XMAS19FiveDatePriorData<- left_join(XMAS19FiveDatePriorData,Avg_daily_fuel_price,by="date") 
 
-## XMAX19FiveDaysAfterData    
-XMAX19FiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysAfter),]%>%
+## XMAS19FiveDaysAfterData    
+XMAS19FiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(XMAS19FiveDaysAfter),]%>%
   filter(FuelCode=="P98")%>% 
   select(date,Brand, Postcode, Price) %>%
   group_by(date,Brand)%>%
@@ -525,46 +526,46 @@ XMAX19FiveDaysAfterData<-fuel_all[fuel_all$date %in% as.Date(XMAX19FiveDaysAfter
   mutate (period="After")
 
 ## Avg daily fuel price of 5 days after will be different from 5 days before
-Avg_daily_fuel_price <- XMAX19FiveDaysAfterData%>% 
+Avg_daily_fuel_price <- XMAS19FiveDaysAfterData%>% 
   group_by(date)%>%
   summarise(daily_avg = mean(brand_daily_avg))
 
-XMAX19FiveDaysAfterData<- left_join(XMAX19FiveDaysAfterData,Avg_daily_fuel_price,by="date")
+XMAS19FiveDaysAfterData<- left_join(XMAS19FiveDaysAfterData,Avg_daily_fuel_price,by="date")
 
 ## Combine Before and after
-XMAX19Before_After_Holiday <-rbind(XMAX19FiveDaysAfterData, XMAX19FiveDatePriorData)%>%
+XMAS19Before_After_Holiday <-rbind(XMAS19FiveDaysAfterData, XMAS19FiveDatePriorData)%>%
   left_join(brand_station_ct,by="Brand")
 
-XMAX19Before_After_Holiday$peri = factor(XMAX19Before_After_Holiday$period, levels=c("Before","After"))
+XMAS19Before_After_Holiday$peri = factor(XMAX19Before_After_Holiday$period, levels=c("Before","After"))
 
 
-# Create chart for 2019 XMAX 
-### lead in lead out 2019 XMAX school holiday, chart 2019XMAXFivedayLessThan40Brands
+# Create chart for 2019 XMAS 
+### lead in lead out 2019 XMAS school holiday, chart 2019XMASFivedayLessThan40Brands
 
-XMAX19Before_After_Holiday %>% 
+XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_1")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after school holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Lead in/out 2019 Xmas holiday", subtitle = "Brand with less than 40 stations")+
+  ggtitle("Lead in/out 2019 Christmas holiday", subtitle = "Brand with less than 40 stations")+
   labs(color="Brands")+
   facet_wrap(~peri,ncol=1)+
   scale_x_continuous(breaks = seq(1, 10, by = 1))+
   theme(legend.position="bottom")
 
 
-#chart for group_2, brand with less than 100 stations, chart 2019MAXFivedayLessThan100Brands
+#chart for group_2, brand with less than 100 stations, chart 2019MASFivedayLessThan100Brands
 
-XMAX19Before_After_Holiday %>% 
+XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_2")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after school holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Lead in/out 2019 Xmax holiday", subtitle = "Brand with less than 100 stations")+
+  ggtitle("Lead in/out 2019 Christmas holiday", subtitle = "Brand with less than 100 stations")+
   labs(color="Brands")+
   facet_wrap(~peri,ncol=1)+
   scale_x_continuous(breaks = seq(1, 10, by = 1))+
@@ -572,16 +573,16 @@ XMAX19Before_After_Holiday %>%
 
 
 
-#chart for group_3, brand with less than 200 stations,chart 2019XMAXFivedayLessThan200Brands
+#chart for group_3, brand with less than 200 stations,chart 2019XMASFivedayLessThan200Brands
 
-XMAX19Before_After_Holiday %>% 
+XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_3")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Lead in/out 2019 Xmax holiday", subtitle = "Brand with less than 200 stations")+
+  ggtitle("Lead in/out 2019 Christmas holiday", subtitle = "Brand with less than 200 stations")+
   labs(color="Brands")+
   facet_wrap(~peri,ncol=1)+
   scale_x_continuous(breaks = seq(1, 10, by = 1))+
@@ -591,14 +592,14 @@ XMAX19Before_After_Holiday %>%
 
 #chart for group_4, brand with less than 400 stations
 
-XMAX19Before_After_Holiday %>% 
+XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_4")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
   geom_line(aes(y=daily_avg),color = "red",size=2,stat = "identity")+
   xlab("# days before/after holiday")+
   ylab("Average Fuel Price $cent")+
-  ggtitle("Lead in/out 2019 Xmax holiday", subtitle = "Brand with less than 400 stations")+
+  ggtitle("Lead in/out 2019 Christmas holiday", subtitle = "Brand with less than 400 stations")+
   labs(color="Brands")+
   facet_wrap(~peri,ncol=1)+
   scale_x_continuous(breaks = seq(1, 10, by = 1))+
@@ -853,3 +854,66 @@ leaflet(latlon) %>%
 
 
 ## How to plot SA2_NSW with fuel_station_Aggr_P98???????
+
+#Plots for the assignment T4 vs T1 ----
+
+figure1 <- ggarrange(T4_40, T1_40,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure2 <- ggarrange(T4_100, T1_100,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure3 <- ggarrange(T4_200, T1_200,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure4 <- ggarrange(T4_400, T1_400,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure1
+figure2
+figure3
+figure4
+
+# #Plots for the assignment bank holidays ----
+
+figure5 <- ggarrange(QB_40, AD_40,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure6 <- ggarrange(QB_100, AD_100,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure7 <- ggarrange(QB_200, AD_200,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure8 <- ggarrange(QB_400, AD_400,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE,
+                     legend="bottom")
+
+figure5
+figure6
+figure7
+figure8
+
