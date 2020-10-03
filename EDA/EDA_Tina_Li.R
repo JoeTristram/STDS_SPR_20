@@ -12,6 +12,7 @@ library(leaflet)
 library(leaflet.extras)
 library(ggmap)
 library(ggpubr)
+library(gridExtra)
 
 ########################################################
 #Import/combine 12 month's fuel data --------
@@ -62,7 +63,8 @@ write.csv(Fuel_All, "EDA/fuel_all.csv")
 
 # Load data ------
 fuel_all <- read.csv(here("EDA","fuel_all.csv"))%>%
-  filter(FuelCode=="P98"|FuelCode=="DL"|FuelCode=="LPG")
+  filter(FuelCode=="P98"|FuelCode=="DL"|FuelCode=="LPG")%>%
+  filter(date >= '2019-08-01' & date <= '2020-07-31')
 
 fuel_all$date<-ymd(fuel_all$date)
 fuel_all$Price<-as.numeric(fuel_all$Price)
@@ -91,7 +93,7 @@ House_data <- read.csv(here("House_Price_Data","Combined_HousePriceFebToJul20.cs
 FiveDaysPrior<- c(format(seq(as.Date("2020-05-31"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
 FiveDaysAfter<- c(format(seq(as.Date("2020-06-02"), length.out=5, by="1 day"), format="%Y-%m-%d"))
 AUFiveDaysPrior<- c(format(seq(as.Date("2020-01-26"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
-AUFiveDaysAfter<- c(format(seq(as.Date("2020-01-27"), length.out=5, by="1 day"), format="%Y-%m-%d"))
+AUFiveDaysAfter<- c(format(seq(as.Date("2020-01-28"), length.out=5, by="1 day"), format="%Y-%m-%d"))
 
 # create subsets based on date
 ## FiveDatePriorData - Queen's Birthday
@@ -170,7 +172,7 @@ QB_200 <- Before_After_Holiday %>%
   ggtitle("Lead in/out 2020 Queen's Birthday", subtitle = "Brand with less than 200 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)  
-dev.off()
+
 
 #chart for group_4, brand with less than 400 stations
 
@@ -542,7 +544,7 @@ XMAS19Before_After_Holiday$peri = factor(XMAX19Before_After_Holiday$period, leve
 # Create chart for 2019 XMAS 
 ### lead in lead out 2019 XMAS school holiday, chart 2019XMASFivedayLessThan40Brands
 
-XMAS19Before_After_Holiday %>% 
+x_40 <- XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_1")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -558,7 +560,7 @@ XMAS19Before_After_Holiday %>%
 
 #chart for group_2, brand with less than 100 stations, chart 2019MASFivedayLessThan100Brands
 
-XMAS19Before_After_Holiday %>% 
+x_100 <- XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_2")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -567,15 +569,14 @@ XMAS19Before_After_Holiday %>%
   ylab("Average Fuel Price $cent")+
   ggtitle("Lead in/out 2019 Christmas holiday", subtitle = "Brand with less than 100 stations")+
   labs(color="Brands")+
-  facet_wrap(~peri,ncol=1)+
-  scale_x_continuous(breaks = seq(1, 10, by = 1))+
-  theme(legend.position="bottom")
+  facet_wrap(~period,ncol=1)+
+  scale_x_continuous(breaks = seq(1, 10, by = 1))
 
 
 
 #chart for group_3, brand with less than 200 stations,chart 2019XMASFivedayLessThan200Brands
 
-XMAS19Before_After_Holiday %>% 
+x_200 <- XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_3")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -584,15 +585,14 @@ XMAS19Before_After_Holiday %>%
   ylab("Average Fuel Price $cent")+
   ggtitle("Lead in/out 2019 Christmas holiday", subtitle = "Brand with less than 200 stations")+
   labs(color="Brands")+
-  facet_wrap(~peri,ncol=1)+
-  scale_x_continuous(breaks = seq(1, 10, by = 1))+
-  theme(legend.position="bottom") 
+  facet_wrap(~period,ncol=1)+
+  scale_x_continuous(breaks = seq(1, 10, by = 1))
 
 
 
 #chart for group_4, brand with less than 400 stations
 
-XMAS19Before_After_Holiday %>% 
+x_400 <- XMAS19Before_After_Holiday %>% 
   filter(station_group=="Group_4")%>%
   ggplot(aes(x = as.numeric(day_number), y = brand_daily_avg)) +
   geom_line(aes(color=Brand))+
@@ -601,9 +601,8 @@ XMAS19Before_After_Holiday %>%
   ylab("Average Fuel Price $cent")+
   ggtitle("Lead in/out 2019 Christmas holiday", subtitle = "Brand with less than 400 stations")+
   labs(color="Brands")+
-  facet_wrap(~peri,ncol=1)+
-  scale_x_continuous(breaks = seq(1, 10, by = 1))+
-  theme(legend.position="bottom")
+  facet_wrap(~period,ncol=1)+
+  scale_x_continuous(breaks = seq(1, 10, by = 1))
 
 
 
@@ -917,3 +916,10 @@ figure6
 figure7
 figure8
 
+figure9 <- ggarrange(x_100, x_200, x_400,
+                     labels = c("A", "B", "C"),
+                     nrow = 1,
+                     common.legend = FALSE,
+                     legend="bottom")
+
+figure9
