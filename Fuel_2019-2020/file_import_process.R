@@ -78,9 +78,16 @@ address_station_ct <- fuel_all %>%
 
 write.csv(address_station_ct, "Postcode_SA2/station_unique.csv")
 
+address_sa2_lat_long <- read.csv(here("Postcode_SA2","address_geocoded.csv"))
+
+fuel_all <- left_join(fuel_all, address_sa2_lat_long, by = "Address")
+
+write.csv(fuel_all, 'Fuel_2019-2020//fuel_all.csv')
+
 # House price data --------
 
 House_data <- read.csv(here("EDA","Combined_HousePriceAug19ToJul20.csv"))
+house_sa2_lat_long <- read.csv(here("Postcode_SA2","houselatlon.csv"))
 
 house_all <- House_data %>%
   select(Property.ID,Property.Unit.Number,Property.House.Number,
@@ -94,7 +101,9 @@ house_all <- House_data %>%
          Day = Day_of_the_week <- weekdays(Settlement_date))%>%
   rename(date=Settlement.Date,Postcode = Postal.Code)
 
-write.csv(house_all, 'house_all.csv')
+house_all <- left_join(house_all, house_sa2_lat_long, by = "fulladdress")
+
+write.csv(house_all, 'House_Price_Data//house_all.csv')
 
 house_all %>%
   ggplot(aes(Purchase.Price))+
