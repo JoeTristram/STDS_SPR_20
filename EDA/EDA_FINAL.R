@@ -12,6 +12,9 @@ library(forecast)
 fuel_all <- read_csv(here("Fuel_2019-2020","fuel_all.csv"))
 fuel_all <- fuel_all[!is.na(fuel_all$date), ]
 
+fuel_all <- fuel_all %>%
+  filter(date >= "2019-08-01")
+
 
 # new variables for EDA ---------
 
@@ -19,7 +22,7 @@ fuel_type_list <- as.list(levels(factor(fuel_all$FuelCode)))
 postcode_list <- as.list(levels(factor(fuel_all$Postcode)))
 station_list <- as.list(levels(factor(fuel_all$Brand)))
 day_order <- c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
-month_order <- c('January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September', 'October', 'November', 'December')
+month_order <- c('Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
 
 
 # write cleaned data to .csv ---------
@@ -90,22 +93,30 @@ time_date_day$Day <- factor(time_date_day$Day, level = day_order)
 time_date_day %>%
   ggplot(aes(x = Day, y = avg_price)) +
   geom_boxplot() +
-  facet_wrap(~FuelCode)
+  facet_wrap(~FuelCode) +
+  ggtitle("Average Daily Fuel Price") +
+  labs(y= "Average Fuel Price (Cents)", x = "Day")
 
 daily_dl <- time_date_day %>%
   filter(FuelCode == "DL") %>%
   ggplot(aes(x = Day, y = avg_price)) +
-  geom_boxplot()
+  geom_boxplot() +
+  ggtitle(subtitle = "(Fuel Type: DL)") +
+  labs(y= "Average Fuel Price (Cents)", x = "Day")
 
 daily_p98 <- time_date_day %>%
   filter(FuelCode == "P98") %>%
   ggplot(aes(x = Day, y = avg_price)) +
-  geom_boxplot()
+  geom_boxplot() +
+  ggtitle(subtitle = "(Fuel Type: P98)") +
+  labs(y= "Average Fuel Price (Cents)", x = "Day")
 
 daily_lpg <- time_date_day %>%
   filter(FuelCode == "LPG") %>%
   ggplot(aes(x = Day, y = avg_price)) +
-  geom_boxplot()
+  geom_boxplot() +
+  ggtitle(subtitle = "(Fuel Type: LPG)") +
+  labs(y= "Average Fuel Price (Cents)", x = "Day")
 
 # * Figure 2 ----
 
@@ -118,7 +129,7 @@ figure2
 
 time_date_month <- fuel_all %>%
   select(Brand, Postcode, FuelCode, Price, date) %>%
-  mutate(Month = month <- months(fuel_all$date)) %>%
+  mutate(Month = month <- months(fuel_all$date, abbreviate = TRUE)) %>%
   filter(FuelCode == fuel_type_list) %>%
   group_by(Postcode, FuelCode, Month) %>%
   summarise(avg_price = mean(Price))
@@ -133,17 +144,23 @@ time_date_month %>%
 monthly_dl <- time_date_month %>%
   filter(FuelCode == "DL") %>%
   ggplot(aes(x = Month, y = avg_price)) +
-  geom_boxplot()
+  geom_boxplot() +
+  ggtitle("Average Fuel Price", subtitle = "(Fuel Type: DL)") +
+  labs(y= "Average Fuel Price (Cents)", x = "Month")
 
 monthly_p98 <- time_date_month %>%
   filter(FuelCode == "P98") %>%
   ggplot(aes(x = Month, y = avg_price)) +
-  geom_boxplot()
+  geom_boxplot() +
+  ggtitle("Average Fuel Price", subtitle = "(Fuel Type: P98)") +
+  labs(y= "Average Fuel Price (Cents)", x = "Month")
 
 monthly_lpg <- time_date_month %>%
   filter(FuelCode == "LPG") %>%
   ggplot(aes(x = Month, y = avg_price)) +
-  geom_boxplot()
+  geom_boxplot() +
+  ggtitle("Average Fuel Price", subtitle = "(Fuel Type: LPG)") +
+  labs(y= "Average Fuel Price (Cents)", x = "Month")
 
 mutate(Quarter = quarter <- quarters(fuel_all$date))
 
