@@ -97,7 +97,7 @@ house_all <- House_data %>%
                              Property.Street.Name,Property.Suburb,Postal.Code, "AU",sep=","),
          Settlement_date = dmy(Settlement.Date),
          Settlement_month = format(as.Date(Settlement_date), "%Y-%m"),
-         moth= month(Settlement_date),
+         month= month(Settlement_date),
          Day = Day_of_the_week <- weekdays(Settlement_date))%>%
   rename(date=Settlement.Date,Postcode = Postal.Code)
 
@@ -105,7 +105,31 @@ house_all <- left_join(house_all, house_sa2_lat_long, by = "fulladdress")
 
 write.csv(house_all, 'House_Price_Data//house_all.csv')
 
-house_all %>%
-  ggplot(aes(Purchase.Price))+
-  geom_histogram(breaks=seq(100, 250000, by=50))
+# Creating subset dataframes ---------
 
+# read in data ---------
+
+fuel_all <- read_csv(here("Fuel_2019-2020","fuel_all.csv"))
+house_all <- read_csv(here("House_Price_Data", "house_all.csv"))
+
+
+## aggregative fuel price start
+
+fuel_station_Aggr <- fuel_all %>%
+  select(Address,Brand, Mth, ServiceStationName,Postcode, Price,FuelCode, SA2) %>%
+  group_by(Address,Brand, Mth, ServiceStationName,Postcode,FuelCode, SA2) %>%
+  summarise(pc_avg_fuel_price=mean(Price)) %>%
+  spread(FuelCode,pc_avg_fuel_price)
+
+
+## aggregative fuel price start
+
+house_price_aggr <- house_all %>%
+  select(month, Postcode, Purchase.Price, SA2) %>%
+  group_by(month, Postcode, SA2) %>%
+  summarise(pc_med_house_price = median(Purchase.Price))
+
+
+#Combine files ---------
+
+house_fuel_all_month <- left_join(fuel_station_Aggr, house_price_aggr, by = c("Mth"="month", "Postcode", "SA2"))
