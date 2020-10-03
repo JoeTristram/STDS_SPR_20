@@ -15,10 +15,13 @@ library(here)
 library(scales)
 library(dplyr)
 library(ggplot2)
+library(plyr)
+
 
 # Import data --------
 
 fuel_all <- read_csv(here("Fuel_2019-2020","fuel_all.csv"))
+fuel_all<-filter(fuel_all, fuel_all$date >= '2019-08-01	' & fuel_all$date <= '2020-07-31	')
 house_all <- read_csv(here("House_Price_Data", "house_all.csv"))
 
 
@@ -363,25 +366,30 @@ lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
 
-# *** GLM model for P98 ------
-
-glm(P98 ~ pc_med_house_price, data = Fuel_type_P98) %>%
-  summary()
 
 #*** GLM model for DL ------------
 
 Fuel_type_DL <- house_fuel_all_month %>%
   select(-P98, -LPG) %>%
   na.omit()
-glm(DL ~ pc_med_house_price, data = Fuel_type_DL) %>%
-  summary()
 
-#*** GLM model for DL ------------
+GlmDL <- glm(DL ~ pc_med_house_price, data = Fuel_type_DL) 
+  summary(GlmDL)
+plot(GlmDL)
+
+#*** GLM model for LPG ------------
 Fuel_type_LPG <- house_fuel_all_month %>%
   select(-P98, -DL) %>%
   na.omit()
 
-glm(LPG ~ pc_med_house_price, data = Fuel_type_LPG) %>%
-  summary()
+GlmLPG <- glm(LPG ~ pc_med_house_price, data = Fuel_type_LPG) 
+summary(GlmLPG)  
 
+#*** GLM model for LPG ------------
+Fuel_type_P98 <- house_fuel_all_month %>%
+  select(-DL, -LPG) %>%
+  na.omit()
 
+GlmP98 <-glm(P98 ~ Brand, data = Fuel_type_P98) 
+summary(GlmP98)
+plot(GlmP98)
