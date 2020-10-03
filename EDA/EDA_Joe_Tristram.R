@@ -3,7 +3,8 @@ library(tidyverse)
 library(skimr)
 library(here)
 library(scales)
-
+library(Ecdat)
+library(forecast)
 
 # read in data --------
 
@@ -30,7 +31,7 @@ fuel_type_list <- as.list(levels(factor(fuel_all$FuelCode)))
 postcode_list <- as.list(levels(factor(fuel_all$Postcode)))
 station_list <- as.list(levels(factor(fuel_all$Brand)))
 day_order <- c('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
-month_order <- c('January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September', 'October', 'November', 'December')
+month_order <- c('August', 'September', 'October', 'November', 'December', 'January', 'February', 'March', 'April', 'May','June', 'July')
 
 #Fuel type lists
 standard_unleaded <- list("E10", "U91")
@@ -106,7 +107,7 @@ time_date_month %>%
   geom_boxplot() +
   facet_wrap(~FuelCode)
 
-  mutate(Quarter = quarter <- quarters(fuel_all$date)) %>%
+  mutate(Quarter = quarter <- quarters(fuel_all$date))
 
 # How is the data distrbuted and how do we visualise on a map ---------
 
@@ -154,4 +155,28 @@ ggplot(data = code, aes(x = Date, y = Average_fuel_price,color = FuelCode))+
 #   facet_wrap(facets=vars(Brand))
 #
 # ggplot(data=StationsToChk,mapping=aes(x=Price))+
-#   geom_freqpoly(mapping= aes(colour = Brand), binwidth=3) 
+#   geom_freqpoly(mapping= aes(colour = Brand), binwidth=3)
+
+# Trend analysis ---------
+
+timeseries_fuel = ave_price
+plot(as.ts(timeseries_fuel$average_fuel_price))
+
+trend_fuel = ma(timeseries_fuel$average_fuel_price, order = 13, centre = T)
+plot(as.ts(timeseries_fuel$average_fuel_price))
+lines(trend_fuel)
+plot(as.ts(trend_fuel))
+
+detrend_fuel = timeseries_fuel$average_fuel_price / trend_fuel
+plot(as.ts(detrend_fuel))
+
+cycle_fuel = t(matrix(data = detrend_fuel, nrow = 13))
+seasonal_fuel = colMeans(cycle_fuel, na.rm = T)
+plot(as.ts(rep(seasonal_fuel, 13)))
+
+random_fuel = timeseries_fuel$average_fuel_price / (trend_fuel * seasonal_fuel)
+plot(as.ts(random_fuel))
+
+recomposed_fuel = trend_fuel*seasonal_fuel*random_fuel
+plot(as.ts(recomposed_fuel))
+
