@@ -11,6 +11,7 @@ library(rgdal)
 library(leaflet)
 library(leaflet.extras)
 library(ggmap)
+library(ggpubr)
 
 ########################################################
 #Import/combine 12 month's fuel data --------
