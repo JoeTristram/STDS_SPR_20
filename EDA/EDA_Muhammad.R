@@ -18,18 +18,42 @@ library(ggplot2)
 
 # Import data --------
 
-fuel_all <- read.csv(here("EDA","fuel_all.csv"))
+fuel_all <- read_csv(here("Fuel_2019-2020","fuel_all.csv"))
+house_all <- read_csv(here("House_Price_Data", "house_all.csv"))
 
-House_data <- read.csv(here("EDA","Combined_HousePriceAug19ToJul20.csv"))
 
 #Data wrangling --------
+## aggregative fuel price start
+
+fuel_station_Aggr <- fuel_all %>%
+  select(Address,Brand, Mth, ServiceStationName,Postcode, Price,FuelCode, SA2) %>%
+  group_by(Address,Brand, Mth, ServiceStationName,Postcode,FuelCode, SA2) %>%
+  summarise(pc_avg_fuel_price=mean(Price)) %>%
+  spread(FuelCode,pc_avg_fuel_price)
+
+
+## aggregative fuel price start
+
+house_price_aggr <- house_all %>%
+  select(moth, Postcode, Purchase.Price, SA2) %>%
+  group_by(moth, Postcode, SA2) %>%
+  summarise(pc_med_house_price = median(Purchase.Price))
+
+
+#Combine files ---------
+
+house_fuel_all_month <- left_join(fuel_station_Aggr, house_price_aggr, by = c("Mth"="moth", "Postcode", "SA2"))
+
+#Renameing The 'Month' column name ?
+
+house_fuel_all_month <- rename(house_fuel_all_month,  month = Mth)
 
 #Renameing The 'Postal.Code' column name ?
-average_house_price <- rename(House_data,  Postcode = Postal.Code)
+#average_house_price <- rename(House_data,  Postcode = Postal.Code)
 
 # Create a datafram to group/bin the stations based on count --------
 
-brand_station_ct <- fuel_all %>%
+brand_station_ct <- house_fuel_all_month %>%
   group_by(Brand)%>%
   summarise(brand_station_CT = n_distinct(ServiceStationName)) %>%
   mutate(station_group = ifelse(brand_station_CT < 40, "Group_1", ifelse(brand_station_CT < 100, "Group_2", ifelse(brand_station_CT < 200, "Group_3", "Group_4")))) %>%
@@ -37,13 +61,13 @@ brand_station_ct <- fuel_all %>%
 
 # Building dataframes for analysis (P98, DL and LPG) --------
 
-average_fuel_price_P98 <- fuel_all %>%
-  filter(FuelCode == "P98") %>%
+average_fuel_price_P98 <- house_fuel_all_month %>%
+  filter(P98 == "P98") %>%
   select(Postcode, Brand, FuelCode, Price) %>%
   group_by(FuelCode, Brand, Postcode) %>%
   summarise(avg_fuel_price = mean(Price))
 
-average_fuel_price_DL <- fuel_all %>%
+average_fuel_price_DL <- house_fuel_all_month %>%
   filter(FuelCode == "DL") %>%
   select(Postcode, Brand, FuelCode, Price) %>%
   group_by(FuelCode, Brand, Postcode) %>%
@@ -103,9 +127,8 @@ lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_P98)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_P98)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_P98)
 
-# *** GLM model for P98 - Average House price -----
 
-glm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_P98, family="gaussian")
+
 
 # ** DL ----
 com_House_fuel_station_DL %>%
@@ -339,3 +362,26 @@ com_House_fuel_station_LPG %>%
 lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
+
+# *** GLM model for P98 ------
+
+glm(P98 ~ pc_med_house_price, data = Fuel_type_P98) %>%
+  summary()
+
+#*** GLM model for DL ------------
+
+Fuel_type_DL <- house_fuel_all_month %>%
+  select(-P98, -LPG) %>%
+  na.omit()
+glm(DL ~ pc_med_house_price, data = Fuel_type_DL) %>%
+  summary()
+
+#*** GLM model for DL ------------
+Fuel_type_LPG <- house_fuel_all_month %>%
+  select(-P98, -DL) %>%
+  na.omit()
+
+glm(LPG ~ pc_med_house_price, data = Fuel_type_LPG) %>%
+  summary()
+
+
