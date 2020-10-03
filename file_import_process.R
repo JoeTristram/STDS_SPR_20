@@ -110,6 +110,8 @@ write.csv(house_all, 'House_Price_Data//house_all.csv')
 # read in data ---------
 
 fuel_all <- read_csv(here("Fuel_2019-2020","fuel_all.csv"))
+fuel_all<-filter(fuel_all, fuel_all$date >= '2019-08-01' & fuel_all$date <= '2020-07-31')
+
 house_all <- read_csv(here("House_Price_Data", "house_all.csv"))
 
 
