@@ -105,7 +105,3 @@ house_all <- left_join(house_all, house_sa2_lat_long, by = "fulladdress")
 
 write.csv(house_all, 'House_Price_Data//house_all.csv')
 
-house_all %>%
-  ggplot(aes(Purchase.Price))+
-  geom_histogram(breaks=seq(100, 250000, by=50))
-
