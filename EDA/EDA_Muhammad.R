@@ -127,12 +127,13 @@ com_House_fuel_station_P98 %>%
 
 # *** Regression model for P98 - Average House price -----
 
-lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_P98)
-lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_P98)
-lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_P98)
+lmbrandP98 <- lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_P98)
+summary(lmbrandP98)
+plot(lmbrandP98)
 
-
-
+lmSgroupP98 <- lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_P98)
+summary(lmSgroupP98)
+plot(lmSgroupP98)
 
 # ** DL ----
 com_House_fuel_station_DL %>%
@@ -144,9 +145,13 @@ com_House_fuel_station_DL %>%
   geom_smooth(method = "lm", se = FALSE)
 
 # *** Regression model for DL - Average House price -----
-lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_DL)
-lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_DL)
-lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_DL)
+lmbrandDL <- lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_DL)
+summary(lmbrandDL)
+plot(lmbrandDL)
+
+lmSgroupPDL <- lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_DL)
+summary(lmSgroupPDL)
+plot(lmSgroupPDL)
 
 # *** GLM model for DL - Average House price -----
 
@@ -163,10 +168,12 @@ com_House_fuel_station_LPG %>%
 
 # *** Regression model for LPG - Average House price -----
 
-lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
-lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
-lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
-
+lmBrandLPG <- lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
+summary(lmBrandLPG)
+plot(lmBrandLPG)
+lmgroupPLPG <- lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
+summary(lmgroupPLPG)
+plot(lmgroupPLPG)
 
 
 # *** GLM model for LPG - Average House price -----
@@ -318,9 +325,12 @@ com_House_fuel_station_LPG %>%
 
 LM1 <- lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
 summary(LM1)
-#plot(LM1)
+plot(LM1)
 
-lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
+lmLPG <-lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
+summary(lmLPG)
+plot(lmLPG)
+
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
 
 # * Maximum house price --------
@@ -399,11 +409,3 @@ GlmP98 <-glm(P98 ~ Brand, data = Fuel_type_P98)
 summary(GlmP98)
 plot(GlmP98)
 
-
-com_House_fuel_station_LPG %>%
-  ggplot(aes(x = min_house_price, y = avg_fuel_price, colour = station_group )  ) +
-  geom_point() +
-  ggtitle("Minmum House Price Vs Average Fuel Price", subtitle = "(Fuel Type: LPG)") +
-  labs(y="Average Fuel Price", x = "Minmum House Price") +
-  scale_x_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
-  geom_smooth(method = "lm", se = FALSE)
