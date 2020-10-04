@@ -918,7 +918,7 @@ figure8
 figure9 <- ggarrange(x_100, x_200, x_400,
                      labels = c("A", "B", "C"),
                      nrow = 1,
-                     common.legend = TRUE,
+                     common.legend = FALSE,
                      legend="bottom")
 
 figure9
