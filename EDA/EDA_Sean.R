@@ -5,6 +5,10 @@ library(lubridate)
 # read in data ---------
 
 fuel_all <- read_csv(here("Fuel_2019-2020","fuel_all.csv"))
+
+fuel_all <- fuel_all %>%
+  filter(date >= "2019-08-01")
+
 house_all <- read_csv(here("House_Price_Data", "house_all.csv"))
 
 
@@ -67,3 +71,4 @@ plot(lm2)
 lm3 <- lm(LPG ~ pc_med_house_price, data = Fuel_type_LPG)
 summary(lm3)
 plot(lm3)
+
