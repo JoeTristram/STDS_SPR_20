@@ -63,7 +63,8 @@ write.csv(Fuel_All, "EDA/fuel_all.csv")
 
 # Load data ------
 fuel_all <- read.csv(here("EDA","fuel_all.csv"))%>%
-  filter(FuelCode=="P98"|FuelCode=="DL"|FuelCode=="LPG")
+  filter(FuelCode=="P98"|FuelCode=="DL"|FuelCode=="LPG")%>%
+  filter(date >= '2019-08-01' & date <= '2020-07-31')
 
 fuel_all$date<-ymd(fuel_all$date)
 fuel_all$Price<-as.numeric(fuel_all$Price)
@@ -92,7 +93,7 @@ House_data <- read.csv(here("House_Price_Data","Combined_HousePriceFebToJul20.cs
 FiveDaysPrior<- c(format(seq(as.Date("2020-05-31"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
 FiveDaysAfter<- c(format(seq(as.Date("2020-06-02"), length.out=5, by="1 day"), format="%Y-%m-%d"))
 AUFiveDaysPrior<- c(format(seq(as.Date("2020-01-26"), length.out=5, by="-1 day"), format="%Y-%m-%d"))
-AUFiveDaysAfter<- c(format(seq(as.Date("2020-01-27"), length.out=5, by="1 day"), format="%Y-%m-%d"))
+AUFiveDaysAfter<- c(format(seq(as.Date("2020-01-28"), length.out=5, by="1 day"), format="%Y-%m-%d"))
 
 # create subsets based on date
 ## FiveDatePriorData - Queen's Birthday
@@ -171,7 +172,7 @@ QB_200 <- Before_After_Holiday %>%
   ggtitle("Lead in/out 2020 Queen's Birthday", subtitle = "Brand with less than 200 stations")+
   labs(color="Brands")+
   facet_wrap(~period,ncol=1)  
-dev.off()
+
 
 #chart for group_4, brand with less than 400 stations
 
