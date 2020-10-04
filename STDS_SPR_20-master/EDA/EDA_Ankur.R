@@ -58,3 +58,6 @@ com_House_fuel_station_LPG %>%
   ggplot(aes(x = avg_house_price, y = avg_fuel_price) ) +
   geom_jitter() +
   geom_smooth(method = "lm", se = FALSE)
+lm(avg_fuel_price ~ avg_house_price, com_House_fuel_station_DL)
+lm(avg_fuel_price ~ avg_house_price, com_House_fuel_station_P98)
+lm(avg_fuel_price ~ avg_house_price, com_House_fuel_station_LPG)
