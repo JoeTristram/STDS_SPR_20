@@ -64,13 +64,14 @@ brand_station_ct <- house_fuel_all_month %>%
 
 # Building dataframes for analysis (P98, DL and LPG) --------
 
-average_fuel_price_P98 <- house_fuel_all_month %>%
-  filter(P98 == "P98") %>%
+
+average_fuel_price_P98 <- fuel_all %>%
+  filter(FuelCode == "P98") %>%
   select(Postcode, Brand, FuelCode, Price) %>%
   group_by(FuelCode, Brand, Postcode) %>%
   summarise(avg_fuel_price = mean(Price))
 
-average_fuel_price_DL <- house_fuel_all_month %>%
+average_fuel_price_DL <- fuel_all %>%
   filter(FuelCode == "DL") %>%
   select(Postcode, Brand, FuelCode, Price) %>%
   group_by(FuelCode, Brand, Postcode) %>%
@@ -91,7 +92,7 @@ average_house_price_count <- average_house_price %>%
 
 # Dataset we have grouped by
 
-average_house_price_grouped <- average_house_price %>%
+average_house_price_grouped <- house_all %>%
   select(Postcode, Purchase.Price) %>%
   group_by(Postcode) %>%
   summarise(min_house_price = min(Purchase.Price),
@@ -118,7 +119,7 @@ com_House_fuel_station_LPG  <- left_join(com_House_fuel_LPG, brand_station_ct, b
 
 com_House_fuel_station_P98 %>%
   ggplot(aes(x = avg_house_price, y = avg_fuel_price, colour = station_group ) ) +
-  geom_point() +
+  geom_jitter() +
   ggtitle("Average House Price Vs Average Fuel Price", subtitle = "(Fuel Type: P98)") +
   labs(y="Average Fuel Price (Cents)", x = "Average House Price") +
   scale_x_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
@@ -241,7 +242,7 @@ lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_P98)
 # ** DL ----
 com_House_fuel_station_DL %>%
   ggplot(aes(x = median_house_price, y = avg_fuel_price, colour = station_group )  ) +
-  geom_point() +
+  geom_jitter(aes(colour = station_group)) +
   ggtitle("Median House Price Vs Average Fuel Price", subtitle = "(Fuel Type: DL)") +
   labs(y="Average Fuel Price (Cents)", x = "Median House Price") +
   scale_x_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
@@ -280,7 +281,7 @@ com_House_fuel_station_P98 %>%
   labs(y="Average Fuel Price", x = "Minmum House Price") +
   scale_x_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
   geom_smooth(method = "lm", se = FALSE)
-
+  
 # *** Regression model for P98 - Median House price -----
 
 lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_P98)
@@ -312,9 +313,13 @@ com_House_fuel_station_LPG %>%
   scale_x_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
   geom_smooth(method = "lm", se = FALSE)
 
+
 # *** Regression model for LPG - Median House price -----
 
-lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
+LM1 <- lm(avg_fuel_price ~ avg_house_price + 0, com_House_fuel_station_LPG)
+summary(LM1)
+#plot(LM1)
+
 lm(avg_fuel_price ~ Brand + 0, com_House_fuel_station_LPG)
 lm(avg_fuel_price ~ station_group + 0, com_House_fuel_station_LPG)
 
@@ -393,3 +398,12 @@ Fuel_type_P98 <- house_fuel_all_month %>%
 GlmP98 <-glm(P98 ~ Brand, data = Fuel_type_P98) 
 summary(GlmP98)
 plot(GlmP98)
+
+
+com_House_fuel_station_LPG %>%
+  ggplot(aes(x = min_house_price, y = avg_fuel_price, colour = station_group )  ) +
+  geom_point() +
+  ggtitle("Minmum House Price Vs Average Fuel Price", subtitle = "(Fuel Type: LPG)") +
+  labs(y="Average Fuel Price", x = "Minmum House Price") +
+  scale_x_continuous(labels = unit_format(unit = "M", scale = 1e-6)) +
+  geom_smooth(method = "lm", se = FALSE)
