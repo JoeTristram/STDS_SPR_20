@@ -1,0 +1,350 @@
+"","ServiceStationName","Address","Suburb","Postcode","Brand","FuelCode","PriceUpdatedDate","Price","date","Holiday.Name","Information","More.Information","Jurisdiction"
+"1664","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-02 09:12:20,84.5,2020-05-02,NA,NA,NA,NA
+"2914","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-04 04:11:24,86.5,2020-05-04,NA,NA,NA,NA
+"3191","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-04 08:46:24,84.5,2020-05-04,NA,NA,NA,NA
+"3195","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","P98",2020-05-04 08:46:54,148.9,2020-05-04,NA,NA,NA,NA
+"3196","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","U91",2020-05-04 08:46:54,127.9,2020-05-04,NA,NA,NA,NA
+"3197","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","DL",2020-05-04 08:46:54,129.9,2020-05-04,NA,NA,NA,NA
+"3198","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","P95",2020-05-04 08:46:54,137.9,2020-05-04,NA,NA,NA,NA
+"4412","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","U91",2020-05-05 07:19:13,89.5,2020-05-05,NA,NA,NA,NA
+"4946","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","U91",2020-05-05 12:18:44,125.9,2020-05-05,NA,NA,NA,NA
+"4947","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","P95",2020-05-05 12:18:44,137.9,2020-05-05,NA,NA,NA,NA
+"4948","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","P98",2020-05-05 12:18:44,144.9,2020-05-05,NA,NA,NA,NA
+"5528","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","DL",2020-05-05 20:23:40,100.9,2020-05-05,NA,NA,NA,NA
+"5529","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","PDL",2020-05-05 20:23:40,102.9,2020-05-05,NA,NA,NA,NA
+"5804","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-05-06 08:00:27,118.5,2020-05-06,NA,NA,NA,NA
+"5805","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-06 08:00:27,89.5,2020-05-06,NA,NA,NA,NA
+"6355","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","U91",2020-05-06 11:41:55,125.9,2020-05-06,NA,NA,NA,NA
+"6356","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","P95",2020-05-06 11:41:55,135.9,2020-05-06,NA,NA,NA,NA
+"6357","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","P98",2020-05-06 11:41:55,146.9,2020-05-06,NA,NA,NA,NA
+"7006","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-05-06 19:03:55,128.5,2020-05-06,NA,NA,NA,NA
+"7007","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-05-06 19:03:55,119.5,2020-05-06,NA,NA,NA,NA
+"7008","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-06 19:03:55,99.5,2020-05-06,NA,NA,NA,NA
+"7579","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-05-07 08:42:39,89.9,2020-05-07,NA,NA,NA,NA
+"7580","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-05-07 08:42:39,104.9,2020-05-07,NA,NA,NA,NA
+"7871","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","PDL",2020-05-07 10:34:13,103.9,2020-05-07,NA,NA,NA,NA
+"7872","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","DL",2020-05-07 10:34:13,101.9,2020-05-07,NA,NA,NA,NA
+"8518","Independent Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","Independent","DL",2020-05-07 13:51:39,129.9,2020-05-07,NA,NA,NA,NA
+"8527","Independent Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Independent","P98",2020-05-07 13:53:37,140.9,2020-05-07,NA,NA,NA,NA
+"8528","Independent Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Independent","P95",2020-05-07 13:53:37,132.9,2020-05-07,NA,NA,NA,NA
+"8529","Independent Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Independent","U91",2020-05-07 13:53:37,119.9,2020-05-07,NA,NA,NA,NA
+"8811","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-07 16:32:21,119.9,2020-05-07,NA,NA,NA,NA
+"8812","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-07 16:32:21,131.9,2020-05-07,NA,NA,NA,NA
+"8813","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-07 16:32:21,117.9,2020-05-07,NA,NA,NA,NA
+"8814","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-07 16:32:21,138.9,2020-05-07,NA,NA,NA,NA
+"8866","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","P98",2020-05-07 16:57:50,143.9,2020-05-07,NA,NA,NA,NA
+"8867","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","P95",2020-05-07 16:57:50,136.9,2020-05-07,NA,NA,NA,NA
+"8868","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","U91",2020-05-07 16:57:50,124.9,2020-05-07,NA,NA,NA,NA
+"9214","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","DL",2020-05-07 21:10:13,102.9,2020-05-07,NA,NA,NA,NA
+"9215","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","PDL",2020-05-07 21:10:13,104.9,2020-05-07,NA,NA,NA,NA
+"9558","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","U91",2020-05-08 07:04:19,96.5,2020-05-08,NA,NA,NA,NA
+"9714","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-08 08:22:48,139.9,2020-05-08,NA,NA,NA,NA
+"9715","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-08 08:22:48,118.9,2020-05-08,NA,NA,NA,NA
+"9716","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-08 08:22:48,132.9,2020-05-08,NA,NA,NA,NA
+"9717","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-08 08:22:48,120.9,2020-05-08,NA,NA,NA,NA
+"9882","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","P95",2020-05-08 09:36:39,134.9,2020-05-08,NA,NA,NA,NA
+"9883","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","P98",2020-05-08 09:36:39,141.9,2020-05-08,NA,NA,NA,NA
+"9884","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","U91",2020-05-08 09:36:39,121.9,2020-05-08,NA,NA,NA,NA
+"10080","Metro Fuel Deniliquin","375 Cressy St, Deniliquin NSW 2710","Deniliquin","2710","Metro Fuel","U91",2020-05-08 10:30:28,122.9,2020-05-08,NA,NA,NA,NA
+"10081","Metro Fuel Deniliquin","375 Cressy St, Deniliquin NSW 2710","Deniliquin","2710","Metro Fuel","PDL",2020-05-08 10:30:28,120.9,2020-05-08,NA,NA,NA,NA
+"11366","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","DL",2020-05-08 17:57:25,103.9,2020-05-08,NA,NA,NA,NA
+"11367","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","PDL",2020-05-08 17:57:25,105.9,2020-05-08,NA,NA,NA,NA
+"11766","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-09 06:23:07,94.5,2020-05-09,NA,NA,NA,NA
+"12122","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","P95",2020-05-09 09:22:02,133.9,2020-05-09,NA,NA,NA,NA
+"12123","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","U91",2020-05-09 09:22:02,121.9,2020-05-09,NA,NA,NA,NA
+"12124","Independent Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Independent","P98",2020-05-09 09:22:02,144.9,2020-05-09,NA,NA,NA,NA
+"12198","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-05-09 10:56:10,93.9,2020-05-09,NA,NA,NA,NA
+"12199","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-05-09 10:56:10,106.9,2020-05-09,NA,NA,NA,NA
+"12200","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-05-09 10:56:10,88.9,2020-05-09,NA,NA,NA,NA
+"12201","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","DL",2020-05-09 10:56:10,105.9,2020-05-09,NA,NA,NA,NA
+"12295","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-09 12:16:07,117.9,2020-05-09,NA,NA,NA,NA
+"12296","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-09 12:16:07,138.9,2020-05-09,NA,NA,NA,NA
+"12297","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-09 12:16:07,119.9,2020-05-09,NA,NA,NA,NA
+"12298","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-09 12:16:07,131.9,2020-05-09,NA,NA,NA,NA
+"13094","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-10 15:11:06,137.9,2020-05-10,NA,NA,NA,NA
+"13095","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-10 15:11:06,118.9,2020-05-10,NA,NA,NA,NA
+"13096","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-10 15:11:06,116.9,2020-05-10,NA,NA,NA,NA
+"13097","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-10 15:11:06,130.9,2020-05-10,NA,NA,NA,NA
+"13702","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-11 09:13:02,89.5,2020-05-11,NA,NA,NA,NA
+"14598","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-11 17:34:35,99.5,2020-05-11,NA,NA,NA,NA
+"15385","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-12 09:24:09,136.9,2020-05-12,NA,NA,NA,NA
+"15386","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-12 09:24:09,115.9,2020-05-12,NA,NA,NA,NA
+"15387","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-12 09:24:09,129.9,2020-05-12,NA,NA,NA,NA
+"15388","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-12 09:24:09,117.9,2020-05-12,NA,NA,NA,NA
+"15477","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-05-12 09:54:07,120.9,2020-05-12,NA,NA,NA,NA
+"15478","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-05-12 09:54:07,108.9,2020-05-12,NA,NA,NA,NA
+"15479","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-05-12 09:54:07,98.9,2020-05-12,NA,NA,NA,NA
+"15966","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","U91",2020-05-12 14:53:01,99.9,2020-05-12,NA,NA,NA,NA
+"15967","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","P98",2020-05-12 14:53:01,120.9,2020-05-12,NA,NA,NA,NA
+"15968","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","P95",2020-05-12 14:53:01,114.9,2020-05-12,NA,NA,NA,NA
+"16106","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","P98",2020-05-12 16:08:15,125.9,2020-05-12,NA,NA,NA,NA
+"16107","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","P95",2020-05-12 16:08:15,118.9,2020-05-12,NA,NA,NA,NA
+"16108","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","E10",2020-05-12 16:08:15,103.9,2020-05-12,NA,NA,NA,NA
+"16109","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","U91",2020-05-12 16:08:15,105.9,2020-05-12,NA,NA,NA,NA
+"17011","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-13 09:52:46,96.5,2020-05-13,NA,NA,NA,NA
+"18962","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-14 15:24:21,114.9,2020-05-14,NA,NA,NA,NA
+"18963","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-14 15:24:21,135.9,2020-05-14,NA,NA,NA,NA
+"18964","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-14 15:24:21,116.9,2020-05-14,NA,NA,NA,NA
+"18965","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-14 15:24:21,128.9,2020-05-14,NA,NA,NA,NA
+"20010","Independent West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Independent","DL",2020-05-15 12:30:29,119.9,2020-05-15,NA,NA,NA,NA
+"20500","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-05-15 18:24:40,117.5,2020-05-15,NA,NA,NA,NA
+"21178","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-16 12:34:11,95.5,2020-05-16,NA,NA,NA,NA
+"21297","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","U91",2020-05-16 14:29:09,104.9,2020-05-16,NA,NA,NA,NA
+"21298","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","E10",2020-05-16 14:29:09,102.9,2020-05-16,NA,NA,NA,NA
+"21299","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","P95",2020-05-16 14:29:09,117.9,2020-05-16,NA,NA,NA,NA
+"21300","Shell Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Shell","P98",2020-05-16 14:29:09,124.9,2020-05-16,NA,NA,NA,NA
+"23331","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","U91",2020-05-18 10:44:56,98.5,2020-05-18,NA,NA,NA,NA
+"23332","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","P98",2020-05-18 10:45:14,129.5,2020-05-18,NA,NA,NA,NA
+"23439","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-05-18 11:28:27,97.5,2020-05-18,NA,NA,NA,NA
+"23990","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-05-18 17:29:07,96.9,2020-05-18,NA,NA,NA,NA
+"23991","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-05-18 17:29:07,106.9,2020-05-18,NA,NA,NA,NA
+"23992","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","DL",2020-05-18 17:29:07,103.9,2020-05-18,NA,NA,NA,NA
+"23993","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-05-18 17:29:07,118.9,2020-05-18,NA,NA,NA,NA
+"25034","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-05-19 11:29:25,119.5,2020-05-19,NA,NA,NA,NA
+"29368","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-21 09:36:21,108.9,2020-05-21,NA,NA,NA,NA
+"29369","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-21 09:36:21,122.9,2020-05-21,NA,NA,NA,NA
+"29370","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-21 09:36:21,129.9,2020-05-21,NA,NA,NA,NA
+"29371","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-21 09:36:21,110.9,2020-05-21,NA,NA,NA,NA
+"30602","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-21 15:33:53,124.9,2020-05-21,NA,NA,NA,NA
+"30603","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-21 15:33:53,105.9,2020-05-21,NA,NA,NA,NA
+"30604","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-21 15:33:53,103.9,2020-05-21,NA,NA,NA,NA
+"30605","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-21 15:33:53,117.9,2020-05-21,NA,NA,NA,NA
+"34096","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P95",2020-05-22 15:08:00,113.9,2020-05-22,NA,NA,NA,NA
+"34097","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","U91",2020-05-22 15:08:00,101.9,2020-05-22,NA,NA,NA,NA
+"34098","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","P98",2020-05-22 15:08:00,120.9,2020-05-22,NA,NA,NA,NA
+"34099","SHELL LANSVALE WEST","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Shell","E10",2020-05-22 15:08:00,99.9,2020-05-22,NA,NA,NA,NA
+"34576","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","PDL",2020-05-22 18:41:06,106.9,2020-05-22,NA,NA,NA,NA
+"34577","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","DL",2020-05-22 18:41:06,104.9,2020-05-22,NA,NA,NA,NA
+"34841","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-05-23 06:56:43,107.5,2020-05-23,NA,NA,NA,NA
+"38491","Independent Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","Independent","E10",2020-05-25 17:45:32,109.9,2020-05-25,NA,NA,NA,NA
+"38564","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-05-25 19:20:17,101.9,2020-05-25,NA,NA,NA,NA
+"38565","Ampol Hoxton Park","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-05-25 19:20:17,113.9,2020-05-25,NA,NA,NA,NA
+"40236","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","DL",2020-05-27 08:13:49,106.9,2020-05-27,NA,NA,NA,NA
+"40569","Independent Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Independent","DL",2020-05-27 09:46:07,127.9,2020-05-27,NA,NA,NA,NA
+"41806","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","PDL",2020-05-27 17:38:49,107.9,2020-05-27,NA,NA,NA,NA
+"41807","Independent Glenfield","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Independent","DL",2020-05-27 17:38:49,105.9,2020-05-27,NA,NA,NA,NA
+"45362","Independent Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","Independent","E10",2020-05-29 20:18:43,109.9,2020-05-29,NA,NA,NA,NA
+"45363","Independent Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","Independent","U91",2020-05-29 20:18:43,119.9,2020-05-29,NA,NA,NA,NA
+"46760","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","U91",2020-05-31 12:39:36,99.5,2020-05-31,NA,NA,NA,NA
+"46761","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","DL",2020-05-31 12:39:36,109.9,2020-05-31,NA,NA,NA,NA
+"47777","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","P98",2020-06-01 11:53:01,140.9,2020-06-01,NA,NA,NA,NA
+"48012","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","P95",2020-06-01 15:52:30,132.9,2020-06-01,NA,NA,NA,NA
+"48107","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","DL",2020-06-01 16:36:36,105.9,2020-06-01,NA,NA,NA,NA
+"48108","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-06-01 16:36:36,111.9,2020-06-01,NA,NA,NA,NA
+"48109","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-06-01 16:36:36,99.9,2020-06-01,NA,NA,NA,NA
+"48330","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-06-01 19:53:47,109.5,2020-06-01,NA,NA,NA,NA
+"48331","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-01 19:53:47,99.5,2020-06-01,NA,NA,NA,NA
+"49871","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","DL",2020-06-02 17:23:47,106.5,2020-06-02,NA,NA,NA,NA
+"49944","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-06-02 18:45:26,106.5,2020-06-02,NA,NA,NA,NA
+"53624","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-06-05 16:38:19,155.9,2020-06-05,NA,NA,NA,NA
+"53625","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-06-05 16:38:19,136.9,2020-06-05,NA,NA,NA,NA
+"53626","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-06-05 16:38:19,148.9,2020-06-05,NA,NA,NA,NA
+"53627","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-06-05 16:38:19,134.9,2020-06-05,NA,NA,NA,NA
+"54022","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-06 07:42:31,97.5,2020-06-06,NA,NA,NA,NA
+"55325","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","DL",2020-06-08 09:14:13,118.9,2020-06-08,"Queen's Birthday","Celebrated on second Monday in June except in Western Australia and Queensland.","https://www.industrialrelations.nsw.gov.au/public-holidays/public-holidays-nsw","nsw"
+"55909","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-08 19:34:41,99.5,2020-06-08,"Queen's Birthday","Celebrated on second Monday in June except in Western Australia and Queensland.","https://www.industrialrelations.nsw.gov.au/public-holidays/public-holidays-nsw","nsw"
+"56836","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-06-09 13:58:49,134.9,2020-06-09,NA,NA,NA,NA
+"56837","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","PDL",2020-06-09 13:58:49,125.9,2020-06-09,NA,NA,NA,NA
+"56838","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","DL",2020-06-09 13:58:49,119.9,2020-06-09,NA,NA,NA,NA
+"56839","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-06-09 13:58:49,148.9,2020-06-09,NA,NA,NA,NA
+"56840","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-06-09 13:58:49,155.9,2020-06-09,NA,NA,NA,NA
+"56841","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-06-09 13:58:49,136.9,2020-06-09,NA,NA,NA,NA
+"57383","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","E10",2020-06-09 17:04:52,107.9,2020-06-09,NA,NA,NA,NA
+"57384","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","U91",2020-06-09 17:04:52,109.9,2020-06-09,NA,NA,NA,NA
+"57385","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","P98",2020-06-09 17:04:52,129.9,2020-06-09,NA,NA,NA,NA
+"57386","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","P95",2020-06-09 17:04:52,122.9,2020-06-09,NA,NA,NA,NA
+"57654","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","DL",2020-06-09 21:44:40,106.9,2020-06-09,NA,NA,NA,NA
+"57655","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","PDL",2020-06-09 21:44:40,108.9,2020-06-09,NA,NA,NA,NA
+"61354","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","U91",2020-06-12 06:04:33,102.5,2020-06-12,NA,NA,NA,NA
+"61698","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-06-12 09:16:33,104.9,2020-06-12,NA,NA,NA,NA
+"61699","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","DL",2020-06-12 09:16:33,107.9,2020-06-12,NA,NA,NA,NA
+"61700","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-06-12 09:16:33,116.9,2020-06-12,NA,NA,NA,NA
+"61701","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-06-12 09:16:33,99.9,2020-06-12,NA,NA,NA,NA
+"61711","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-12 09:22:51,101.5,2020-06-12,NA,NA,NA,NA
+"61712","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-06-12 09:22:51,125.5,2020-06-12,NA,NA,NA,NA
+"63084","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","PDL",2020-06-12 19:03:57,109.9,2020-06-12,NA,NA,NA,NA
+"63085","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","DL",2020-06-12 19:03:57,107.9,2020-06-12,NA,NA,NA,NA
+"63664","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-06-13 08:44:18,109.5,2020-06-13,NA,NA,NA,NA
+"63665","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-06-13 08:44:18,128.5,2020-06-13,NA,NA,NA,NA
+"65263","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-14 09:13:48,107.5,2020-06-14,NA,NA,NA,NA
+"65671","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","DL",2020-06-14 15:48:23,109.5,2020-06-14,NA,NA,NA,NA
+"65672","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","P98",2020-06-14 15:48:23,139.5,2020-06-14,NA,NA,NA,NA
+"65673","Shell Aberdare","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Shell","U91",2020-06-14 15:48:23,109.5,2020-06-14,NA,NA,NA,NA
+"65878","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-06-14 18:07:25,145.5,2020-06-14,NA,NA,NA,NA
+"65879","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-06-14 18:07:25,119.5,2020-06-14,NA,NA,NA,NA
+"65880","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-14 18:07:25,129.5,2020-06-14,NA,NA,NA,NA
+"65998","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","DL",2020-06-14 22:15:53,108.9,2020-06-14,NA,NA,NA,NA
+"65999","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","PDL",2020-06-14 22:15:53,110.9,2020-06-14,NA,NA,NA,NA
+"66377","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","P98",2020-06-15 07:57:31,150.9,2020-06-15,NA,NA,NA,NA
+"66378","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","U91",2020-06-15 07:57:31,129.9,2020-06-15,NA,NA,NA,NA
+"66379","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","P95",2020-06-15 07:57:31,142.9,2020-06-15,NA,NA,NA,NA
+"66387","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-06-15 08:03:10,119.9,2020-06-15,NA,NA,NA,NA
+"66388","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-06-15 08:03:10,136.9,2020-06-15,NA,NA,NA,NA
+"66389","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-06-15 08:03:10,124.9,2020-06-15,NA,NA,NA,NA
+"66452","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-15 08:42:08,109.5,2020-06-15,NA,NA,NA,NA
+"66453","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-06-15 08:42:08,109.5,2020-06-15,NA,NA,NA,NA
+"66607","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-06-15 09:23:49,127.5,2020-06-15,NA,NA,NA,NA
+"66637","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-06-15 09:39:22,108.5,2020-06-15,NA,NA,NA,NA
+"66638","BP Aberdare","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-06-15 09:39:22,108.5,2020-06-15,NA,NA,NA,NA
+"68139","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-06-16 06:55:03,119.9,2020-06-16,NA,NA,NA,NA
+"68140","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-06-16 06:55:03,129.9,2020-06-16,NA,NA,NA,NA
+"68141","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-06-16 06:55:03,117.9,2020-06-16,NA,NA,NA,NA
+"75353","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","DL",2020-06-18 19:03:46,109.9,2020-06-18,NA,NA,NA,NA
+"75354","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","PDL",2020-06-18 19:03:46,111.9,2020-06-18,NA,NA,NA,NA
+"80009","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P95",2020-06-21 18:56:35,124.9,2020-06-21,NA,NA,NA,NA
+"80010","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P98",2020-06-21 18:56:35,130.9,2020-06-21,NA,NA,NA,NA
+"80011","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","U91",2020-06-21 18:56:35,109.9,2020-06-21,NA,NA,NA,NA
+"84213","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","PDL",2020-06-23 20:12:00,113.9,2020-06-23,NA,NA,NA,NA
+"84214","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","DL",2020-06-23 20:12:00,111.9,2020-06-23,NA,NA,NA,NA
+"89578","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","DL",2020-06-26 08:43:17,121.9,2020-06-26,NA,NA,NA,NA
+"89868","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P95",2020-06-26 10:10:48,122.9,2020-06-26,NA,NA,NA,NA
+"89869","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","U91",2020-06-26 10:10:48,107.9,2020-06-26,NA,NA,NA,NA
+"89870","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P98",2020-06-26 10:10:48,128.9,2020-06-26,NA,NA,NA,NA
+"93471","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-06-28 11:45:06,123.9,2020-06-28,NA,NA,NA,NA
+"93472","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-06-28 11:45:06,113.9,2020-06-28,NA,NA,NA,NA
+"93473","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","DL",2020-06-28 11:45:06,108.9,2020-06-28,NA,NA,NA,NA
+"93474","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-06-28 11:45:06,111.9,2020-06-28,NA,NA,NA,NA
+"94429","Shell Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Shell","DL",2020-06-29 08:55:55,129.9,2020-06-29,NA,NA,NA,NA
+"94430","Shell Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Shell","U91",2020-06-29 08:55:55,121.9,2020-06-29,NA,NA,NA,NA
+"94431","Shell Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Shell","P95",2020-06-29 08:55:55,134.9,2020-06-29,NA,NA,NA,NA
+"94432","Shell Suffolk Park","207 Broken Head Road, Suffolk Park NSW 2481","Suffolk Park","2481","Shell","P98",2020-06-29 08:55:55,142.9,2020-06-29,NA,NA,NA,NA
+"95429","Shell Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Shell","U91",2020-06-29 16:08:49,125.9,2020-06-29,NA,NA,NA,NA
+"95430","Shell Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Shell","P95",2020-06-29 16:08:49,137.9,2020-06-29,NA,NA,NA,NA
+"95431","Shell Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Shell","P98",2020-06-29 16:08:49,148.9,2020-06-29,NA,NA,NA,NA
+"97371","Metro Fuel Deniliquin","375 Cressy St, Deniliquin NSW 2710","Deniliquin","2710","Metro Fuel","E10",2020-06-30 20:22:06,115.9,2020-06-30,NA,NA,NA,NA
+"98322","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-01 09:01:25,114.5,2020-07-01,NA,NA,NA,NA
+"99202","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P98",2020-07-01 12:10:50,126.9,2020-07-01,NA,NA,NA,NA
+"99203","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","U91",2020-07-01 12:10:50,105.9,2020-07-01,NA,NA,NA,NA
+"99204","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P95",2020-07-01 12:10:50,121.9,2020-07-01,NA,NA,NA,NA
+"101630","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-02 09:02:10,108.5,2020-07-02,NA,NA,NA,NA
+"104257","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P95",2020-07-03 07:02:19,119.9,2020-07-03,NA,NA,NA,NA
+"104258","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","P98",2020-07-03 07:02:19,124.9,2020-07-03,NA,NA,NA,NA
+"104259","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","U91",2020-07-03 07:02:19,103.9,2020-07-03,NA,NA,NA,NA
+"107930","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-07-04 17:17:04,119.9,2020-07-04,NA,NA,NA,NA
+"107931","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-07-04 17:17:04,105.9,2020-07-04,NA,NA,NA,NA
+"107932","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-07-04 17:17:04,107.9,2020-07-04,NA,NA,NA,NA
+"117893","Aberdare Fuel & Lotto","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Independent","DL",2020-07-10 07:58:26,111.5,2020-07-10,NA,NA,NA,NA
+"118461","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-10 12:29:57,99.9,2020-07-10,NA,NA,NA,NA
+"118462","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-10 12:29:57,100,2020-07-10,NA,NA,NA,NA
+"118463","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-10 12:29:57,104,2020-07-10,NA,NA,NA,NA
+"118464","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-10 12:29:57,103,2020-07-10,NA,NA,NA,NA
+"118465","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","DL",2020-07-10 12:29:57,102,2020-07-10,NA,NA,NA,NA
+"118466","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","PDL",2020-07-10 12:29:57,101,2020-07-10,NA,NA,NA,NA
+"119459","Shell Deniliquin","375 Cressy St, Deniliquin NSW 2710","Deniliquin","2710","Shell","E10",2020-07-11 09:04:23,118.9,2020-07-11,NA,NA,NA,NA
+"120594","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-07-12 12:20:55,103.8,2020-07-12,NA,NA,NA,NA
+"120595","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-07-12 12:20:55,115.8,2020-07-12,NA,NA,NA,NA
+"120596","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-07-12 12:20:55,101.8,2020-07-12,NA,NA,NA,NA
+"120804","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-12 17:10:36,110.5,2020-07-12,NA,NA,NA,NA
+"120805","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-07-12 17:10:36,129.5,2020-07-12,NA,NA,NA,NA
+"121151","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-13 08:15:04,118.5,2020-07-13,NA,NA,NA,NA
+"121476","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","PDL",2020-07-13 11:08:55,101,2020-07-13,NA,NA,NA,NA
+"121477","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","DL",2020-07-13 11:08:55,102,2020-07-13,NA,NA,NA,NA
+"121478","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-13 11:08:55,104,2020-07-13,NA,NA,NA,NA
+"121479","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-13 11:08:55,103,2020-07-13,NA,NA,NA,NA
+"121480","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-13 11:08:55,100,2020-07-13,NA,NA,NA,NA
+"121481","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-13 11:08:55,99.9,2020-07-13,NA,NA,NA,NA
+"121483","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","E10",2020-07-13 11:09:31,107.9,2020-07-13,NA,NA,NA,NA
+"121484","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","U91",2020-07-13 11:09:31,109.9,2020-07-13,NA,NA,NA,NA
+"121485","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","P95",2020-07-13 11:09:31,122.9,2020-07-13,NA,NA,NA,NA
+"121486","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","P98",2020-07-13 11:09:31,129.9,2020-07-13,NA,NA,NA,NA
+"121487","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","DL",2020-07-13 11:09:31,119.9,2020-07-13,NA,NA,NA,NA
+"121488","Coles Express Bomaderry","271 Princes Hwy, BOMADERRY NSW 2541","BOMADERRY","2541","Coles Express","PDL",2020-07-13 11:09:31,125.9,2020-07-13,NA,NA,NA,NA
+"121661","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-13 11:58:54,99.9,2020-07-13,NA,NA,NA,NA
+"121662","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-13 11:58:54,103,2020-07-13,NA,NA,NA,NA
+"121663","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","DL",2020-07-13 11:58:54,102,2020-07-13,NA,NA,NA,NA
+"121664","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-13 11:58:54,104,2020-07-13,NA,NA,NA,NA
+"121665","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-13 11:58:54,100,2020-07-13,NA,NA,NA,NA
+"121666","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","PDL",2020-07-13 11:58:54,101,2020-07-13,NA,NA,NA,NA
+"121685","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","PDL",2020-07-13 12:12:01,101,2020-07-13,NA,NA,NA,NA
+"121686","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","DL",2020-07-13 12:12:01,102,2020-07-13,NA,NA,NA,NA
+"121687","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-13 12:12:01,104,2020-07-13,NA,NA,NA,NA
+"121688","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-13 12:12:01,103,2020-07-13,NA,NA,NA,NA
+"121689","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-13 12:12:01,99.9,2020-07-13,NA,NA,NA,NA
+"121690","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-13 12:12:01,100,2020-07-13,NA,NA,NA,NA
+"122425","Aberdare Fuel & Lotto","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Independent","DL",2020-07-14 06:21:47,113.5,2020-07-14,NA,NA,NA,NA
+"122576","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-14 09:48:59,144.9,2020-07-14,NA,NA,NA,NA
+"122577","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-14 09:48:59,160.9,2020-07-14,NA,NA,NA,NA
+"122578","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-14 09:48:59,168.9,2020-07-14,NA,NA,NA,NA
+"122579","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-14 09:48:59,145.9,2020-07-14,NA,NA,NA,NA
+"122580","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","PDL",2020-07-14 09:48:59,129.9,2020-07-14,NA,NA,NA,NA
+"122581","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","DL",2020-07-14 09:48:59,120.9,2020-07-14,NA,NA,NA,NA
+"123021","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-14 13:55:35,112.5,2020-07-14,NA,NA,NA,NA
+"123660","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-07-15 08:25:46,124.5,2020-07-15,NA,NA,NA,NA
+"123767","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-07-15 09:34:10,136.9,2020-07-15,NA,NA,NA,NA
+"123768","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-07-15 09:34:10,149.9,2020-07-15,NA,NA,NA,NA
+"123769","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-07-15 09:34:10,138.9,2020-07-15,NA,NA,NA,NA
+"123788","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-15 09:49:54,140.9,2020-07-15,NA,NA,NA,NA
+"123789","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-15 09:49:54,155.9,2020-07-15,NA,NA,NA,NA
+"123790","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-15 09:49:54,163.9,2020-07-15,NA,NA,NA,NA
+"123791","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-15 09:49:54,139.9,2020-07-15,NA,NA,NA,NA
+"124270","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","DL",2020-07-15 15:53:42,112.9,2020-07-15,NA,NA,NA,NA
+"124271","Uncle Leo's","Lot 1A, Campbelltown, Glenfield NSW 2167","Glenfield","2167","Caltex","PDL",2020-07-15 15:53:42,114.9,2020-07-15,NA,NA,NA,NA
+"125566","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-16 16:24:02,135.9,2020-07-16,NA,NA,NA,NA
+"125567","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-16 16:24:02,159.9,2020-07-16,NA,NA,NA,NA
+"125568","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-16 16:24:02,151.9,2020-07-16,NA,NA,NA,NA
+"125569","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-16 16:24:02,136.9,2020-07-16,NA,NA,NA,NA
+"125619","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-16 16:53:58,120.5,2020-07-16,NA,NA,NA,NA
+"125620","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-16 16:53:58,118.5,2020-07-16,NA,NA,NA,NA
+"125624","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-07-16 16:57:44,129.5,2020-07-16,NA,NA,NA,NA
+"125823","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-16 22:34:38,114.5,2020-07-16,NA,NA,NA,NA
+"125942","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-17 06:56:15,114.5,2020-07-17,NA,NA,NA,NA
+"126976","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-17 17:14:57,118.5,2020-07-17,NA,NA,NA,NA
+"126999","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-17 17:48:27,114.5,2020-07-17,NA,NA,NA,NA
+"129290","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-19 20:40:24,110.5,2020-07-19,NA,NA,NA,NA
+"129755","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-20 09:12:59,134.9,2020-07-20,NA,NA,NA,NA
+"129756","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-20 09:12:59,135.9,2020-07-20,NA,NA,NA,NA
+"129757","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-20 09:12:59,150.9,2020-07-20,NA,NA,NA,NA
+"129758","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-20 09:12:59,158.9,2020-07-20,NA,NA,NA,NA
+"129905","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","DL",2020-07-20 09:58:16,109.9,2020-07-20,NA,NA,NA,NA
+"130222","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-20 12:32:12,108.5,2020-07-20,NA,NA,NA,NA
+"130223","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-20 12:32:12,112.5,2020-07-20,NA,NA,NA,NA
+"131389","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-21 09:12:01,153.9,2020-07-21,NA,NA,NA,NA
+"131390","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-21 09:12:01,145.9,2020-07-21,NA,NA,NA,NA
+"131391","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-21 09:12:01,130.9,2020-07-21,NA,NA,NA,NA
+"131392","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-21 09:12:01,129.9,2020-07-21,NA,NA,NA,NA
+"132022","Shell Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Shell","P95",2020-07-21 13:48:03,138.9,2020-07-21,NA,NA,NA,NA
+"132064","Shell Lennox Head","44-48 Byron St, Lennox Head NSW 2478","Lennox Head","2478","Shell","P98",2020-07-21 13:59:25,149.9,2020-07-21,NA,NA,NA,NA
+"133316","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-22 10:36:57,127.9,2020-07-22,NA,NA,NA,NA
+"133317","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-22 10:36:57,128.9,2020-07-22,NA,NA,NA,NA
+"133318","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-22 10:36:57,151.9,2020-07-22,NA,NA,NA,NA
+"133319","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-22 10:36:57,143.9,2020-07-22,NA,NA,NA,NA
+"134205","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-22 15:53:01,126.9,2020-07-22,NA,NA,NA,NA
+"134206","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-22 15:53:01,150.9,2020-07-22,NA,NA,NA,NA
+"134207","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-22 15:53:01,127.9,2020-07-22,NA,NA,NA,NA
+"134208","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-22 15:53:01,142.9,2020-07-22,NA,NA,NA,NA
+"137277","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-23 16:28:59,138.9,2020-07-23,NA,NA,NA,NA
+"137278","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-23 16:28:59,146.9,2020-07-23,NA,NA,NA,NA
+"137279","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-23 16:28:59,122.9,2020-07-23,NA,NA,NA,NA
+"137280","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-23 16:28:59,123.9,2020-07-23,NA,NA,NA,NA
+"137454","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-07-23 17:29:58,127.9,2020-07-23,NA,NA,NA,NA
+"137455","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-07-23 17:29:58,139.9,2020-07-23,NA,NA,NA,NA
+"137456","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-07-23 17:29:58,129.9,2020-07-23,NA,NA,NA,NA
+"140711","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-25 09:16:01,109.5,2020-07-25,NA,NA,NA,NA
+"140712","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-25 09:16:05,119.9,2020-07-25,NA,NA,NA,NA
+"140713","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-25 09:16:05,120.9,2020-07-25,NA,NA,NA,NA
+"140714","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-25 09:16:05,135.9,2020-07-25,NA,NA,NA,NA
+"140715","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-25 09:16:05,143.9,2020-07-25,NA,NA,NA,NA
+"141865","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","P95",2020-07-25 16:10:17,129.9,2020-07-25,NA,NA,NA,NA
+"141866","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","E10",2020-07-25 16:10:17,117.9,2020-07-25,NA,NA,NA,NA
+"141867","VELOX PETROLEUM","358 Hoxton Park Road, HOXTON PARK NSW 2171","HOXTON PARK","2171","Independent","U91",2020-07-25 16:10:17,119.9,2020-07-25,NA,NA,NA,NA
+"142753","Aberdare Fuel & Lotto","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Independent","U91",2020-07-26 12:19:07,106.5,2020-07-26,NA,NA,NA,NA
+"142754","Aberdare Fuel & Lotto","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Independent","P98",2020-07-26 12:19:07,136.5,2020-07-26,NA,NA,NA,NA
+"142755","Aberdare Fuel & Lotto","68 Aberdare Road, Aberdare NSW 2325","Aberdare","2325","Independent","DL",2020-07-26 12:19:07,108.5,2020-07-26,NA,NA,NA,NA
+"143307","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-26 22:59:45,105.5,2020-07-26,NA,NA,NA,NA
+"143433","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","P95",2020-07-27 07:21:35,119.5,2020-07-27,NA,NA,NA,NA
+"144401","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","DL",2020-07-27 13:15:41,108.5,2020-07-27,NA,NA,NA,NA
+"146308","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","P98",2020-07-28 11:16:09,140.9,2020-07-28,NA,NA,NA,NA
+"146309","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","DL",2020-07-28 11:16:09,120.9,2020-07-28,NA,NA,NA,NA
+"146310","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","U91",2020-07-28 11:16:09,120.9,2020-07-28,NA,NA,NA,NA
+"146311","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","P95",2020-07-28 11:16:09,133.9,2020-07-28,NA,NA,NA,NA
+"146828","Aberdare Petroleum","81 Aberdare Rd, ABERDARE NSW 2325","ABERDARE","2325","BP","U91",2020-07-28 15:17:30,104.5,2020-07-28,NA,NA,NA,NA
+"147723","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","U91",2020-07-29 07:53:42,119.9,2020-07-29,NA,NA,NA,NA
+"147724","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","P95",2020-07-29 07:53:42,132.9,2020-07-29,NA,NA,NA,NA
+"147725","BP Hastings Point","1 Coast Road, Hastings Point NSW 2489","Hastings Point","2489","BP","P98",2020-07-29 07:53:42,140.9,2020-07-29,NA,NA,NA,NA
+"149348","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P98",2020-07-29 15:17:03,141.9,2020-07-29,NA,NA,NA,NA
+"149349","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","U91",2020-07-29 15:17:03,118.9,2020-07-29,NA,NA,NA,NA
+"149350","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","P95",2020-07-29 15:17:03,133.9,2020-07-29,NA,NA,NA,NA
+"149351","Coles Express Lansvale West","240 Hume Highway, LANSVALE NSW 2166","LANSVALE","2166","Coles Express","E10",2020-07-29 15:17:03,117.9,2020-07-29,NA,NA,NA,NA
+"153025","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","P98",2020-07-31 06:18:55,139.9,2020-07-31,NA,NA,NA,NA
+"153026","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","P95",2020-07-31 06:18:55,132.9,2020-07-31,NA,NA,NA,NA
+"153027","Shell Big Pineapple West Ballina","482 River Street, West Ballina NSW 2478","West Ballina","2478","Shell","U91",2020-07-31 06:18:55,119.9,2020-07-31,NA,NA,NA,NA
